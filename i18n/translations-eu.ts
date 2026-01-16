@@ -14,10 +14,127 @@ export const es: TranslationKeys = {
   complianceForm: { title: 'Cumplimiento Legal', subtitle: 'Selecciona las regulaciones que necesitas cumplir según tu base de usuarios.', gdpr: 'GDPR (Europa)', gdprDesc: 'Reglamento General de Protección de Datos. Esencial si tienes usuarios en la UE.', ccpa: 'CCPA (California)', ccpaDesc: 'Ley de Privacidad del Consumidor de California.', cpra: 'CPRA (California Enmendada)', cpraDesc: 'Ley de Derechos de Privacidad de California. Actualización del CCPA.', caloppa: 'CalOPPA (California Online)', caloppaDesc: 'Ley de Protección de Privacidad en Línea de California.', coppa: 'COPPA (Niños)', coppaDesc: 'Ley de Protección de Privacidad Infantil en Línea. Si tu público son menores de 13 años.' },
   thirdPartyForm: { title: 'Servicios de Terceros', subtitle: '¿Qué herramientas o servicios externos interactúan con los datos de tus usuarios?', googleAnalytics: 'Google Analytics', googleAdSense: 'Google AdSense', facebookPixel: 'Meta / Facebook Pixel', stripe: 'Pagos Stripe', paypal: 'PayPal', intercom: 'Intercom / Chat' },
   aiThinking: { analyzing: 'Analizando estructura del negocio...', checking: 'Verificando requisitos GDPR y CCPA...', formulating: 'Formulando cláusulas de retención de datos...', drafting: 'Redactando documento legal...', poweredBy: 'Impulsado por IA', finalizing: 'Finalizando estructura del documento...' },
-  policyResult: { savedBadge: '¡Acabas de ahorrar ~$500 en honorarios legales!', successTitle: 'Política Generada con Éxito', successDesc: 'Tu documento es legalmente sólido y está listo para usar. Si te resultó útil, considera compartirlo.', documentPreview: 'Vista Previa del Documento', showHtml: 'Mostrar HTML', showPreview: 'Mostrar Vista Previa', copy: 'Copiar', copied: 'Copiado', whatsNext: '¿Qué sigue?', step1: 'Copia el texto HTML o Markdown.', step2: 'Crea una nueva página en tu sitio (ej. /privacidad).', step3: 'Enlázala desde tu pie de página.', makeAdjustments: 'Hacer Ajustes', trustBadge: 'Insignia de Confianza Gratis', trustBadgeDesc: 'Añade esta insignia al pie de página de tu sitio para mostrar que te importa la privacidad de tus usuarios.', disclaimer: 'Aviso: Esta política fue generada por IA. Se proporciona solo con fines informativos y no constituye asesoramiento legal. Debes consultar con un abogado calificado para revisar tu política de privacidad.' },
-  howItWorks: { title: 'Cómo Funciona FreeGDPR', subtitle: 'Genera una política de privacidad legalmente sólida en minutos, no días.', step1Title: '1. Ingresa Detalles', step1Desc: 'Completa un cuestionario simple sobre tu sitio web o app, prácticas de recopilación de datos y herramientas de terceros.', step2Title: '2. Generación IA', step2Desc: 'Nuestra IA avanzada analiza tus entradas y redacta una política de privacidad completa adaptada a tus necesidades.', step3Title: '3. Revisa Cumplimiento', step3Desc: 'La política generada incluye cláusulas para GDPR, CCPA y otras regulaciones según tu selección.', step4Title: '4. Descarga y Publica', step4Desc: 'Copia el markdown o descarga el archivo, luego publícalo en tu sitio web o app móvil.', ctaTitle: '¿Listo para proteger tu negocio?', ctaDesc: 'Inicia el asistente ahora y obtén tu política de privacidad gratis.' },
-  legalResources: { title: 'Recursos Legales', subtitle: 'Enlaces útiles y documentación para entender las regulaciones de privacidad de datos.', gdprTitle: 'Texto Oficial GDPR', gdprDesc: 'El texto oficial completo del Reglamento General de Protección de Datos.', ccpaTitle: 'Guía CCPA (California)', ccpaDesc: 'Información oficial sobre la Ley de Privacidad del Consumidor de California.', coppaTitle: 'FAQ COPPA', coppaDesc: 'Guía de la FTC sobre la Regla de Protección de Privacidad Infantil en Línea.', gaTitle: 'Privacidad Google Analytics', gaDesc: 'Información de privacidad y seguridad de datos para usuarios de Google Analytics.' },
-  whyFree: { badge: 'Filosofía Open Source', title: 'La privacidad no debería ser un', titleHighlight: 'impuesto de lujo', subtitle: 'Creemos que cada emprendedor, creador y desarrollador merece protección legal sin el precio de $5,000. Usamos IA para democratizar el cumplimiento.', compareTitle: 'Compara Opciones', compareSubtitle: '¿Es gratis realmente mejor?', lawFirm: 'Bufete Tradicional', lawFirmSlow: 'Muy Lento (Semanas)', lawFirmLiability: 'Cobertura de Responsabilidad Completa', lawFirmBilling: 'Facturación por Hora', templates: 'Plantillas Genéricas', templatesInstant: 'Descarga Instantánea', templatesGeneric: 'Genérico / Desactualizado', templatesNoCustom: 'Sin Personalización', freeGdpr: 'FreeGDPR', freeGdprInstant: 'Borrador IA Instantáneo', freeGdprTailored: 'Adaptado a Ti', freeGdprAlways: 'Siempre Gratis', nextStepTitle: 'Una Política es Solo el Primer Paso', nextStepDesc: 'Tener un documento te hace cumplir en papel. ¿Pero tienes la implementación técnica para respaldarlo?', technicalTitle: 'Implementación Técnica', technicalDesc: '¿Tienes configurado Google Consent Mode v2? ¿Tus cookies realmente se bloquean antes del consentimiento?', riskTitle: 'Auditoría de Riesgos y Necesidades Empresariales', riskDesc: 'Si manejas datos sensibles (Salud, Finanzas, Niños), un generador gratuito no es suficiente.', ctaTitle: '¿Necesitas Implementación Profesional?', ctaDesc: 'No arriesgues multas por una mala configuración técnica. Contrata al equipo que construyó esta herramienta.', ctaButton: 'Contactar Tenten AI Agency', ctaSubtext: 'La Agencia AI-First Líder en Asia' },
+  result: {
+    savedBadge: '¡Acabas de ahorrar ~$500 en honorarios legales!',
+    title: 'Política Generada con Éxito',
+    subtitle: 'Tu documento es legalmente sólido y está listo para usar. Si te resultó útil, considera compartirlo.',
+    shareText: 'Acabo de generar una política de privacidad completa gratis con FreeGDPR. ¡Échale un vistazo!',
+    shareTwitter: 'Compartir en Twitter',
+    shareLinkedin: 'Compartir en LinkedIn',
+    documentPreview: 'Vista Previa del Documento',
+    showHtml: 'Mostrar HTML',
+    showPreview: 'Mostrar Vista Previa',
+    copy: 'Copiar',
+    copied: 'Copiado',
+    whatsNext: {
+      title: '¿Qué sigue?',
+      steps: [
+        'Copia el texto HTML o Markdown.',
+        'Crea una nueva página en tu sitio (ej. /privacidad).',
+        'Enlázala desde tu pie de página.',
+      ],
+    },
+    makeAdjustments: 'Hacer Ajustes',
+    badge: {
+      title: 'Insignia de Confianza Gratis',
+      description: 'Añade esta insignia al pie de página de tu sitio para mostrar que te importa la privacidad de tus usuarios.',
+      preview: 'Privacidad verificada por FreeGDPR',
+    },
+    disclaimer: 'Aviso: Esta política fue generada por IA. Se proporciona solo con fines informativos y no constituye asesoramiento legal. Debes consultar con un abogado calificado para revisar tu política de privacidad.',
+  },
+  howItWorks: {
+    title: 'Cómo Funciona FreeGDPR',
+    subtitle: 'Genera una política de privacidad legalmente sólida en minutos, no días.',
+    steps: [
+      {
+        title: '1. Ingresa Detalles',
+        description: 'Completa un cuestionario simple sobre tu sitio web o app, prácticas de recopilación de datos y herramientas de terceros.',
+      },
+      {
+        title: '2. Generación IA',
+        description: 'Nuestra IA avanzada analiza tus entradas y redacta una política de privacidad completa adaptada a tus necesidades.',
+      },
+      {
+        title: '3. Revisa Cumplimiento',
+        description: 'La política generada incluye cláusulas para GDPR, CCPA y otras regulaciones según tu selección.',
+      },
+      {
+        title: '4. Descarga y Publica',
+        description: 'Copia el markdown o descarga el archivo, luego publícalo en tu sitio web o app móvil.',
+      },
+    ],
+    cta: {
+      title: '¿Listo para proteger tu negocio?',
+      description: 'Inicia el asistente ahora y obtén tu política de privacidad gratis.',
+    },
+  },
+  legalResources: {
+    title: 'Recursos Legales',
+    subtitle: 'Enlaces útiles y documentación para entender las regulaciones de privacidad de datos.',
+    resources: [
+      {
+        title: 'Texto Oficial GDPR',
+        description: 'El texto oficial completo del Reglamento General de Protección de Datos.',
+      },
+      {
+        title: 'Guía CCPA (California)',
+        description: 'Información oficial sobre la Ley de Privacidad del Consumidor de California.',
+      },
+      {
+        title: 'FAQ COPPA',
+        description: 'Guía de la FTC sobre la Regla de Protección de Privacidad Infantil en Línea.',
+      },
+      {
+        title: 'Privacidad Google Analytics',
+        description: 'Información de privacidad y seguridad de datos para usuarios de Google Analytics.',
+      },
+    ],
+  },
+  whyFree: {
+    openSourceBadge: 'Filosofía Open Source',
+    title: 'La privacidad no debería ser un {highlight}.',
+    titleHighlight: 'impuesto de lujo',
+    subtitle: 'Creemos que cada emprendedor, creador y desarrollador merece protección legal sin el precio de $5,000. Usamos IA para democratizar el cumplimiento.',
+    comparison: {
+      header: 'Compara Opciones',
+      subheader: '¿Es gratis realmente mejor?',
+      lawyer: {
+        title: 'Bufete Tradicional',
+        price: '$500 - $5,000',
+        pros: ['Cobertura de Responsabilidad Completa'],
+        cons: ['Muy Lento (Semanas)', 'Facturación por Hora'],
+      },
+      template: {
+        title: 'Plantillas Genéricas',
+        price: '$29 - $99',
+        pros: ['Descarga Instantánea'],
+        cons: ['Genérico / Desactualizado', 'Sin Personalización'],
+      },
+      freeGdpr: {
+        title: 'FreeGDPR',
+        price: '$0.00',
+        features: ['Borrador IA Instantáneo', 'Adaptado a Ti', 'Siempre Gratis'],
+      },
+    },
+    professional: {
+      title: 'Una Política es Solo el Primer Paso',
+      subtitle: 'Tener un documento te hace cumplir en papel. ¿Pero tienes la implementación técnica para respaldarlo?',
+      technical: {
+        title: 'Implementación Técnica',
+        description: '¿Tienes configurado Google Consent Mode v2? ¿Tus cookies realmente se bloquean antes del consentimiento? Escribir el texto es fácil; codificar la barrera es difícil.',
+      },
+      riskAudit: {
+        title: 'Auditoría de Riesgos y Necesidades Empresariales',
+        description: 'Si manejas datos sensibles (Salud, Finanzas, Niños), un generador gratuito no es suficiente. Necesitas un experto humano para auditar tus flujos de datos.',
+      },
+    },
+    cta: {
+      title: '¿Necesitas Implementación Profesional?',
+      description: 'No arriesgues multas por una mala configuración técnica. Contrata al equipo que construyó esta herramienta para implementar tus Gestores de Consentimiento de Cookies, seguimiento del lado del servidor y Gobernanza de Datos.',
+      button: 'Contactar Tenten AI Agency',
+      tagline: 'La Agencia AI-First Líder en Asia',
+    },
+  },
   footer: { copyright: '© {year} FreeGDPR. Todos los derechos reservados.', builtBy: 'Construido con Amor ❤️ por', tentenDesc: 'La Agencia AI-First Líder en Asia', disclaimer: 'Generador de Políticas de Privacidad proporcionado solo con fines informativos.' },
 };
 
@@ -31,10 +148,127 @@ export const fr: TranslationKeys = {
   complianceForm: { title: 'Conformité Légale', subtitle: 'Sélectionnez les réglementations auxquelles vous devez vous conformer.', gdpr: 'RGPD (Europe)', gdprDesc: 'Règlement Général sur la Protection des Données. Essentiel pour les utilisateurs UE.', ccpa: 'CCPA (Californie)', ccpaDesc: 'Loi sur la Protection de la Vie Privée des Consommateurs de Californie.', cpra: 'CPRA (Californie Amendée)', cpraDesc: 'Loi sur les Droits de Confidentialité de Californie.', caloppa: 'CalOPPA (Californie Online)', caloppaDesc: 'Loi de Protection de la Confidentialité en Ligne de Californie.', coppa: 'COPPA (Enfants)', coppaDesc: 'Loi sur la Protection de la Vie Privée des Enfants en Ligne.' },
   thirdPartyForm: { title: 'Services Tiers', subtitle: 'Quels outils ou services externes interagissent avec les données de vos utilisateurs?', googleAnalytics: 'Google Analytics', googleAdSense: 'Google AdSense', facebookPixel: 'Meta / Facebook Pixel', stripe: 'Paiements Stripe', paypal: 'PayPal', intercom: 'Intercom / Chat' },
   aiThinking: { analyzing: 'Analyse de la structure commerciale...', checking: 'Vérification des exigences RGPD et CCPA...', formulating: 'Formulation des clauses de rétention des données...', drafting: 'Rédaction du document juridique...', poweredBy: 'Propulsé par IA', finalizing: 'Finalisation de la structure du document...' },
-  policyResult: { savedBadge: 'Vous venez d\'économiser ~500$ en frais juridiques!', successTitle: 'Politique Générée avec Succès', successDesc: 'Votre document est juridiquement solide et prêt à l\'emploi.', documentPreview: 'Aperçu du Document', showHtml: 'Afficher HTML', showPreview: 'Afficher Aperçu', copy: 'Copier', copied: 'Copié', whatsNext: 'Et Maintenant?', step1: 'Copiez le texte HTML ou Markdown.', step2: 'Créez une nouvelle page sur votre site (ex. /confidentialite).', step3: 'Liez-la depuis votre pied de page.', makeAdjustments: 'Faire des Ajustements', trustBadge: 'Badge de Confiance Gratuit', trustBadgeDesc: 'Ajoutez ce badge au pied de page de votre site.', disclaimer: 'Avertissement: Cette politique a été générée par IA. Elle est fournie à titre informatif uniquement.' },
-  howItWorks: { title: 'Comment Fonctionne FreeGDPR', subtitle: 'Générez une politique juridiquement solide en minutes, pas en jours.', step1Title: '1. Entrez les Détails', step1Desc: 'Remplissez un questionnaire simple sur votre site ou app.', step2Title: '2. Génération IA', step2Desc: 'Notre IA avancée analyse vos entrées et rédige une politique complète.', step3Title: '3. Vérifiez la Conformité', step3Desc: 'La politique générée inclut des clauses pour RGPD, CCPA et autres.', step4Title: '4. Téléchargez et Publiez', step4Desc: 'Copiez le markdown ou téléchargez le fichier.', ctaTitle: 'Prêt à protéger votre entreprise?', ctaDesc: 'Démarrez l\'assistant maintenant.' },
-  legalResources: { title: 'Ressources Juridiques', subtitle: 'Liens utiles pour comprendre les réglementations sur la confidentialité des données.', gdprTitle: 'Texte Officiel RGPD', gdprDesc: 'Le texte officiel complet du Règlement Général sur la Protection des Données.', ccpaTitle: 'Guide CCPA (Californie)', ccpaDesc: 'Informations officielles sur le CCPA.', coppaTitle: 'FAQ COPPA', coppaDesc: 'Guide FTC sur la règle COPPA.', gaTitle: 'Confidentialité Google Analytics', gaDesc: 'Informations de confidentialité pour les utilisateurs Google Analytics.' },
-  whyFree: { badge: 'Philosophie Open Source', title: 'La confidentialité ne devrait pas être une', titleHighlight: 'taxe de luxe', subtitle: 'Nous croyons que chaque entrepreneur mérite une protection juridique sans le prix de 5 000$.', compareTitle: 'Comparez les Options', compareSubtitle: 'Gratuit est-il vraiment mieux?', lawFirm: 'Cabinet Traditionnel', lawFirmSlow: 'Très Lent (Semaines)', lawFirmLiability: 'Couverture Responsabilité Complète', lawFirmBilling: 'Facturation Horaire', templates: 'Modèles Génériques', templatesInstant: 'Téléchargement Instantané', templatesGeneric: 'Générique / Obsolète', templatesNoCustom: 'Pas de Personnalisation', freeGdpr: 'FreeGDPR', freeGdprInstant: 'Brouillon IA Instantané', freeGdprTailored: 'Adapté à Vous', freeGdprAlways: 'Toujours Gratuit', nextStepTitle: 'Une Politique n\'est que la Première Étape', nextStepDesc: 'Avoir un document vous rend conforme sur papier. Mais avez-vous l\'implémentation technique?', technicalTitle: 'Implémentation Technique', technicalDesc: 'Avez-vous configuré Google Consent Mode v2?', riskTitle: 'Audit des Risques et Besoins Entreprise', riskDesc: 'Si vous traitez des données sensibles, un générateur gratuit ne suffit pas.', ctaTitle: 'Besoin d\'une Implémentation Professionnelle?', ctaDesc: 'Ne risquez pas d\'amendes à cause d\'une mauvaise configuration technique.', ctaButton: 'Contacter Tenten AI Agency', ctaSubtext: 'L\'Agence AI-First Leader en Asie' },
+  result: {
+    savedBadge: 'Vous venez d\'économiser ~500$ en frais juridiques!',
+    title: 'Politique Générée avec Succès',
+    subtitle: 'Votre document est juridiquement solide et prêt à l\'emploi. Si cet outil vous a été utile, pensez à le partager.',
+    shareText: 'Je viens de générer une politique de confidentialité complète gratuitement avec FreeGDPR. Découvrez-le!',
+    shareTwitter: 'Partager sur Twitter',
+    shareLinkedin: 'Partager sur LinkedIn',
+    documentPreview: 'Aperçu du Document',
+    showHtml: 'Afficher HTML',
+    showPreview: 'Afficher Aperçu',
+    copy: 'Copier',
+    copied: 'Copié',
+    whatsNext: {
+      title: 'Et Maintenant?',
+      steps: [
+        'Copiez le texte HTML ou Markdown.',
+        'Créez une nouvelle page sur votre site (ex. /confidentialite).',
+        'Liez-la depuis votre pied de page.',
+      ],
+    },
+    makeAdjustments: 'Faire des Ajustements',
+    badge: {
+      title: 'Badge de Confiance Gratuit',
+      description: 'Ajoutez ce badge au pied de page de votre site pour montrer que vous vous souciez de la confidentialité de vos utilisateurs.',
+      preview: 'Confidentialité vérifiée par FreeGDPR',
+    },
+    disclaimer: 'Avertissement: Cette politique a été générée par IA. Elle est fournie à titre informatif uniquement et ne constitue pas un conseil juridique.',
+  },
+  howItWorks: {
+    title: 'Comment Fonctionne FreeGDPR',
+    subtitle: 'Générez une politique juridiquement solide en minutes, pas en jours.',
+    steps: [
+      {
+        title: '1. Entrez les Détails',
+        description: 'Remplissez un questionnaire simple sur votre site ou app, vos pratiques de collecte de données et outils tiers.',
+      },
+      {
+        title: '2. Génération IA',
+        description: 'Notre IA avancée analyse vos entrées et rédige une politique de confidentialité complète adaptée à vos besoins.',
+      },
+      {
+        title: '3. Vérifiez la Conformité',
+        description: 'La politique générée inclut des clauses pour RGPD, CCPA et autres réglementations selon votre sélection.',
+      },
+      {
+        title: '4. Téléchargez et Publiez',
+        description: 'Copiez le markdown ou téléchargez le fichier, puis publiez-le sur votre site web ou application mobile.',
+      },
+    ],
+    cta: {
+      title: 'Prêt à protéger votre entreprise?',
+      description: 'Démarrez l\'assistant maintenant et obtenez votre politique de confidentialité gratuite.',
+    },
+  },
+  legalResources: {
+    title: 'Ressources Juridiques',
+    subtitle: 'Liens utiles pour comprendre les réglementations sur la confidentialité des données.',
+    resources: [
+      {
+        title: 'Texte Officiel RGPD',
+        description: 'Le texte officiel complet du Règlement Général sur la Protection des Données.',
+      },
+      {
+        title: 'Guide CCPA (Californie)',
+        description: 'Informations officielles sur la Loi sur la Protection de la Vie Privée des Consommateurs de Californie.',
+      },
+      {
+        title: 'FAQ COPPA',
+        description: 'Guide FTC sur la règle de Protection de la Vie Privée des Enfants en Ligne.',
+      },
+      {
+        title: 'Confidentialité Google Analytics',
+        description: 'Informations de confidentialité et sécurité des données pour les utilisateurs Google Analytics.',
+      },
+    ],
+  },
+  whyFree: {
+    openSourceBadge: 'Philosophie Open Source',
+    title: 'La confidentialité ne devrait pas être une {highlight}.',
+    titleHighlight: 'taxe de luxe',
+    subtitle: 'Nous croyons que chaque entrepreneur, créateur et développeur mérite une protection juridique sans le prix de 5 000$. Nous avons utilisé l\'IA pour démocratiser la conformité.',
+    comparison: {
+      header: 'Comparez les Options',
+      subheader: 'Gratuit est-il vraiment mieux?',
+      lawyer: {
+        title: 'Cabinet Traditionnel',
+        price: '$500 - $5,000',
+        pros: ['Couverture Responsabilité Complète'],
+        cons: ['Très Lent (Semaines)', 'Facturation Horaire'],
+      },
+      template: {
+        title: 'Modèles Génériques',
+        price: '$29 - $99',
+        pros: ['Téléchargement Instantané'],
+        cons: ['Générique / Obsolète', 'Pas de Personnalisation'],
+      },
+      freeGdpr: {
+        title: 'FreeGDPR',
+        price: '$0.00',
+        features: ['Brouillon IA Instantané', 'Adapté à Vous', 'Toujours Gratuit'],
+      },
+    },
+    professional: {
+      title: 'Une Politique n\'est que la Première Étape',
+      subtitle: 'Avoir un document vous rend conforme sur papier. Mais avez-vous l\'implémentation technique pour le soutenir?',
+      technical: {
+        title: 'Implémentation Technique',
+        description: 'Avez-vous configuré Google Consent Mode v2? Vos cookies sont-ils vraiment bloqués avant le consentement? Écrire le texte est facile; coder la barrière est difficile.',
+      },
+      riskAudit: {
+        title: 'Audit des Risques et Besoins Entreprise',
+        description: 'Si vous traitez des données sensibles (Santé, Finance, Enfants), un générateur gratuit ne suffit pas. Vous avez besoin d\'un expert humain pour auditer vos flux de données.',
+      },
+    },
+    cta: {
+      title: 'Besoin d\'une Implémentation Professionnelle?',
+      description: 'Ne risquez pas d\'amendes à cause d\'une mauvaise configuration technique. Engagez l\'équipe qui a construit cet outil pour implémenter vos Gestionnaires de Consentement Cookies, suivi côté serveur et Gouvernance des Données.',
+      button: 'Contacter Tenten AI Agency',
+      tagline: 'L\'Agence AI-First Leader en Asie',
+    },
+  },
   footer: { copyright: '© {year} FreeGDPR. Tous droits réservés.', builtBy: 'Construit avec Amour ❤️ par', tentenDesc: 'L\'Agence AI-First Leader en Asie', disclaimer: 'Générateur de politique de confidentialité fourni à titre informatif uniquement.' },
 };
 
@@ -48,10 +282,127 @@ export const de: TranslationKeys = {
   complianceForm: { title: 'Rechtliche Compliance', subtitle: 'Wählen Sie die Vorschriften aus, die Sie einhalten müssen.', gdpr: 'DSGVO (Europa)', gdprDesc: 'Datenschutz-Grundverordnung. Erforderlich für EU-Nutzer.', ccpa: 'CCPA (Kalifornien)', ccpaDesc: 'California Consumer Privacy Act.', cpra: 'CPRA (Kalifornien geändert)', cpraDesc: 'California Privacy Rights Act.', caloppa: 'CalOPPA (Kalifornien Online)', caloppaDesc: 'California Online Privacy Protection Act.', coppa: 'COPPA (Kinder)', coppaDesc: 'Children\'s Online Privacy Protection Act.' },
   thirdPartyForm: { title: 'Drittanbieter-Dienste', subtitle: 'Welche externen Tools oder Dienste interagieren mit den Nutzerdaten?', googleAnalytics: 'Google Analytics', googleAdSense: 'Google AdSense', facebookPixel: 'Meta / Facebook Pixel', stripe: 'Stripe-Zahlungen', paypal: 'PayPal', intercom: 'Intercom / Chat' },
   aiThinking: { analyzing: 'Geschäftsstruktur wird analysiert...', checking: 'DSGVO- und CCPA-Anforderungen werden geprüft...', formulating: 'Datenaufbewahrungsklauseln werden formuliert...', drafting: 'Rechtsdokument wird erstellt...', poweredBy: 'Powered by KI', finalizing: 'Dokumentstruktur wird finalisiert...' },
-  policyResult: { savedBadge: 'Sie haben gerade ~500$ an Anwaltskosten gespart!', successTitle: 'Richtlinie erfolgreich erstellt', successDesc: 'Ihr Dokument ist rechtlich solide und einsatzbereit.', documentPreview: 'Dokumentvorschau', showHtml: 'HTML anzeigen', showPreview: 'Vorschau anzeigen', copy: 'Kopieren', copied: 'Kopiert', whatsNext: 'Was nun?', step1: 'Kopieren Sie den HTML- oder Markdown-Text.', step2: 'Erstellen Sie eine neue Seite auf Ihrer Website (z.B. /datenschutz).', step3: 'Verlinken Sie sie aus dem Footer.', makeAdjustments: 'Anpassungen vornehmen', trustBadge: 'Kostenloses Vertrauens-Badge', trustBadgeDesc: 'Fügen Sie dieses Badge zu Ihrem Website-Footer hinzu.', disclaimer: 'Hinweis: Diese Richtlinie wurde von KI erstellt und dient nur zu Informationszwecken.' },
-  howItWorks: { title: 'Wie FreeGDPR funktioniert', subtitle: 'Erstellen Sie in Minuten statt Tagen eine rechtlich solide Datenschutzrichtlinie.', step1Title: '1. Details eingeben', step1Desc: 'Füllen Sie einen einfachen Fragebogen aus.', step2Title: '2. KI-Generierung', step2Desc: 'Unsere fortschrittliche KI analysiert Ihre Eingaben.', step3Title: '3. Compliance prüfen', step3Desc: 'Die generierte Richtlinie enthält DSGVO-, CCPA-Klauseln.', step4Title: '4. Herunterladen & Veröffentlichen', step4Desc: 'Kopieren oder downloaden Sie die Datei.', ctaTitle: 'Bereit, Ihr Unternehmen zu schützen?', ctaDesc: 'Starten Sie jetzt den Assistenten.' },
-  legalResources: { title: 'Rechtliche Ressourcen', subtitle: 'Hilfreiche Links zum Verständnis der Datenschutzvorschriften.', gdprTitle: 'Offizieller DSGVO-Text', gdprDesc: 'Der vollständige offizielle Text der Datenschutz-Grundverordnung.', ccpaTitle: 'CCPA-Leitfaden (Kalifornien)', ccpaDesc: 'Offizielle Informationen zum CCPA.', coppaTitle: 'COPPA FAQ', coppaDesc: 'FTC-Leitfaden zur COPPA-Regel.', gaTitle: 'Google Analytics Datenschutz', gaDesc: 'Datenschutz- und Sicherheitsinformationen für Google Analytics-Nutzer.' },
-  whyFree: { badge: 'Open-Source-Philosophie', title: 'Datenschutz sollte keine', titleHighlight: 'Luxussteuer', subtitle: 'Jeder Unternehmer verdient rechtlichen Schutz ohne den Preis von 5.000$.', compareTitle: 'Optionen vergleichen', compareSubtitle: 'Ist kostenlos wirklich besser?', lawFirm: 'Traditionelle Kanzlei', lawFirmSlow: 'Sehr langsam (Wochen)', lawFirmLiability: 'Volle Haftungsdeckung', lawFirmBilling: 'Stundenabrechnung', templates: 'Generische Vorlagen', templatesInstant: 'Sofortiger Download', templatesGeneric: 'Generisch / Veraltet', templatesNoCustom: 'Keine Anpassung', freeGdpr: 'FreeGDPR', freeGdprInstant: 'Sofortiger KI-Entwurf', freeGdprTailored: 'Auf Sie zugeschnitten', freeGdprAlways: 'Immer kostenlos', nextStepTitle: 'Eine Richtlinie ist nur der erste Schritt', nextStepDesc: 'Ein Dokument macht Sie auf dem Papier konform. Aber haben Sie die technische Umsetzung?', technicalTitle: 'Technische Implementierung', technicalDesc: 'Haben Sie Google Consent Mode v2 eingerichtet?', riskTitle: 'Risikoprüfung & Unternehmensanforderungen', riskDesc: 'Bei sensiblen Daten reicht ein kostenloser Generator nicht aus.', ctaTitle: 'Professionelle Implementierung benötigt?', ctaDesc: 'Riskieren Sie keine Bußgelder wegen schlechter technischer Einrichtung.', ctaButton: 'Tenten AI Agency kontaktieren', ctaSubtext: 'Die führende AI-First-Agentur in Asien' },
+  result: {
+    savedBadge: 'Sie haben gerade ~500$ an Anwaltskosten gespart!',
+    title: 'Richtlinie erfolgreich erstellt',
+    subtitle: 'Ihr Dokument ist rechtlich solide und einsatzbereit. Wenn dieses Tool hilfreich war, teilen Sie es bitte.',
+    shareText: 'Ich habe gerade eine umfassende Datenschutzrichtlinie kostenlos mit FreeGDPR erstellt. Schau es dir an!',
+    shareTwitter: 'Auf Twitter teilen',
+    shareLinkedin: 'Auf LinkedIn teilen',
+    documentPreview: 'Dokumentvorschau',
+    showHtml: 'HTML anzeigen',
+    showPreview: 'Vorschau anzeigen',
+    copy: 'Kopieren',
+    copied: 'Kopiert',
+    whatsNext: {
+      title: 'Was nun?',
+      steps: [
+        'Kopieren Sie den HTML- oder Markdown-Text.',
+        'Erstellen Sie eine neue Seite auf Ihrer Website (z.B. /datenschutz).',
+        'Verlinken Sie sie aus dem Footer.',
+      ],
+    },
+    makeAdjustments: 'Anpassungen vornehmen',
+    badge: {
+      title: 'Kostenloses Vertrauens-Badge',
+      description: 'Fügen Sie dieses Badge zu Ihrem Website-Footer hinzu, um zu zeigen, dass Ihnen die Privatsphäre Ihrer Nutzer wichtig ist.',
+      preview: 'Datenschutz verifiziert durch FreeGDPR',
+    },
+    disclaimer: 'Hinweis: Diese Richtlinie wurde von KI erstellt. Sie dient nur zu Informationszwecken und stellt keine Rechtsberatung dar.',
+  },
+  howItWorks: {
+    title: 'Wie FreeGDPR funktioniert',
+    subtitle: 'Erstellen Sie in Minuten statt Tagen eine rechtlich solide Datenschutzrichtlinie.',
+    steps: [
+      {
+        title: '1. Details eingeben',
+        description: 'Füllen Sie einen einfachen Fragebogen über Ihre Website oder App, Datenerfassungspraktiken und Drittanbieter-Tools aus.',
+      },
+      {
+        title: '2. KI-Generierung',
+        description: 'Unsere fortschrittliche KI analysiert Ihre Eingaben und erstellt eine umfassende Datenschutzrichtlinie, die auf Ihre Bedürfnisse zugeschnitten ist.',
+      },
+      {
+        title: '3. Compliance prüfen',
+        description: 'Die generierte Richtlinie enthält Klauseln für DSGVO, CCPA und andere Vorschriften basierend auf Ihrer Auswahl.',
+      },
+      {
+        title: '4. Herunterladen & Veröffentlichen',
+        description: 'Kopieren Sie den Markdown oder laden Sie die Datei herunter und veröffentlichen Sie sie auf Ihrer Website oder mobilen App.',
+      },
+    ],
+    cta: {
+      title: 'Bereit, Ihr Unternehmen zu schützen?',
+      description: 'Starten Sie jetzt den Assistenten und erhalten Sie Ihre kostenlose Datenschutzrichtlinie.',
+    },
+  },
+  legalResources: {
+    title: 'Rechtliche Ressourcen',
+    subtitle: 'Hilfreiche Links zum Verständnis der Datenschutzvorschriften.',
+    resources: [
+      {
+        title: 'Offizieller DSGVO-Text',
+        description: 'Der vollständige offizielle Text der Datenschutz-Grundverordnung.',
+      },
+      {
+        title: 'CCPA-Leitfaden (Kalifornien)',
+        description: 'Offizielle Informationen zum California Consumer Privacy Act.',
+      },
+      {
+        title: 'COPPA FAQ',
+        description: 'FTC-Leitfaden zur Children\'s Online Privacy Protection Rule.',
+      },
+      {
+        title: 'Google Analytics Datenschutz',
+        description: 'Datenschutz- und Sicherheitsinformationen für Google Analytics-Nutzer.',
+      },
+    ],
+  },
+  whyFree: {
+    openSourceBadge: 'Open-Source-Philosophie',
+    title: 'Datenschutz sollte keine {highlight} sein.',
+    titleHighlight: 'Luxussteuer',
+    subtitle: 'Wir glauben, dass jeder Unternehmer, Kreative und Entwickler rechtlichen Schutz ohne den Preis von 5.000$ verdient. Wir haben KI genutzt, um Compliance zu demokratisieren.',
+    comparison: {
+      header: 'Optionen vergleichen',
+      subheader: 'Ist kostenlos wirklich besser?',
+      lawyer: {
+        title: 'Traditionelle Kanzlei',
+        price: '$500 - $5,000',
+        pros: ['Volle Haftungsdeckung'],
+        cons: ['Sehr langsam (Wochen)', 'Stundenabrechnung'],
+      },
+      template: {
+        title: 'Generische Vorlagen',
+        price: '$29 - $99',
+        pros: ['Sofortiger Download'],
+        cons: ['Generisch / Veraltet', 'Keine Anpassung'],
+      },
+      freeGdpr: {
+        title: 'FreeGDPR',
+        price: '$0.00',
+        features: ['Sofortiger KI-Entwurf', 'Auf Sie zugeschnitten', 'Immer kostenlos'],
+      },
+    },
+    professional: {
+      title: 'Eine Richtlinie ist nur der erste Schritt',
+      subtitle: 'Ein Dokument macht Sie auf dem Papier konform. Aber haben Sie die technische Umsetzung, um es zu unterstützen?',
+      technical: {
+        title: 'Technische Implementierung',
+        description: 'Haben Sie Google Consent Mode v2 eingerichtet? Werden Ihre Cookies wirklich vor der Einwilligung blockiert? Den Text zu schreiben ist einfach; die Barriere zu programmieren ist schwer.',
+      },
+      riskAudit: {
+        title: 'Risikoprüfung & Unternehmensanforderungen',
+        description: 'Wenn Sie sensible Daten verarbeiten (Gesundheit, Finanzen, Kinder), reicht ein kostenloser Generator nicht aus. Sie brauchen einen menschlichen Experten, der Ihre Datenflüsse prüft.',
+      },
+    },
+    cta: {
+      title: 'Professionelle Implementierung benötigt?',
+      description: 'Riskieren Sie keine Bußgelder wegen schlechter technischer Einrichtung. Beauftragen Sie das Team, das dieses Tool gebaut hat, um Ihre Cookie-Einwilligungsmanager, serverseitiges Tracking und Daten-Governance zu implementieren.',
+      button: 'Tenten AI Agency kontaktieren',
+      tagline: 'Die führende AI-First-Agentur in Asien',
+    },
+  },
   footer: { copyright: '© {year} FreeGDPR. Alle Rechte vorbehalten.', builtBy: 'Mit Liebe ❤️ erstellt von', tentenDesc: 'Die führende AI-First-Agentur in Asien', disclaimer: 'Datenschutzrichtlinien-Generator nur zu Informationszwecken bereitgestellt.' },
 };
 
@@ -65,10 +416,127 @@ export const pt: TranslationKeys = {
   complianceForm: { title: 'Conformidade Legal', subtitle: 'Selecione os regulamentos que você precisa cumprir.', gdpr: 'GDPR (Europa)', gdprDesc: 'Regulamento Geral de Proteção de Dados. Essencial para usuários da UE.', ccpa: 'CCPA (Califórnia)', ccpaDesc: 'Lei de Privacidade do Consumidor da Califórnia.', cpra: 'CPRA (Califórnia Emendada)', cpraDesc: 'Lei de Direitos de Privacidade da Califórnia.', caloppa: 'CalOPPA (Califórnia Online)', caloppaDesc: 'Lei de Proteção de Privacidade Online da Califórnia.', coppa: 'COPPA (Crianças)', coppaDesc: 'Lei de Proteção de Privacidade Online das Crianças.' },
   thirdPartyForm: { title: 'Serviços de Terceiros', subtitle: 'Quais ferramentas ou serviços externos interagem com os dados dos seus usuários?', googleAnalytics: 'Google Analytics', googleAdSense: 'Google AdSense', facebookPixel: 'Meta / Facebook Pixel', stripe: 'Pagamentos Stripe', paypal: 'PayPal', intercom: 'Intercom / Chat' },
   aiThinking: { analyzing: 'Analisando estrutura do negócio...', checking: 'Verificando requisitos GDPR e CCPA...', formulating: 'Formulando cláusulas de retenção de dados...', drafting: 'Redigindo documento legal...', poweredBy: 'Powered by IA', finalizing: 'Finalizando estrutura do documento...' },
-  policyResult: { savedBadge: 'Você acabou de economizar ~$500 em honorários legais!', successTitle: 'Política Gerada com Sucesso', successDesc: 'Seu documento é juridicamente sólido e está pronto para uso.', documentPreview: 'Prévia do Documento', showHtml: 'Mostrar HTML', showPreview: 'Mostrar Prévia', copy: 'Copiar', copied: 'Copiado', whatsNext: 'E agora?', step1: 'Copie o texto HTML ou Markdown.', step2: 'Crie uma nova página no seu site (ex. /privacidade).', step3: 'Link-a a partir do seu rodapé.', makeAdjustments: 'Fazer Ajustes', trustBadge: 'Selo de Confiança Grátis', trustBadgeDesc: 'Adicione este selo ao rodapé do seu site.', disclaimer: 'Aviso: Esta política foi gerada por IA e é fornecida apenas para fins informativos.' },
-  howItWorks: { title: 'Como o FreeGDPR Funciona', subtitle: 'Gere uma política juridicamente sólida em minutos, não dias.', step1Title: '1. Insira os Detalhes', step1Desc: 'Preencha um questionário simples sobre seu site ou app.', step2Title: '2. Geração IA', step2Desc: 'Nossa IA avançada analisa suas entradas e redige uma política completa.', step3Title: '3. Revise a Conformidade', step3Desc: 'A política gerada inclui cláusulas para GDPR, CCPA e outros.', step4Title: '4. Baixe e Publique', step4Desc: 'Copie o markdown ou baixe o arquivo.', ctaTitle: 'Pronto para proteger seu negócio?', ctaDesc: 'Inicie o assistente agora.' },
-  legalResources: { title: 'Recursos Legais', subtitle: 'Links úteis para entender os regulamentos de privacidade de dados.', gdprTitle: 'Texto Oficial GDPR', gdprDesc: 'O texto oficial completo do Regulamento Geral de Proteção de Dados.', ccpaTitle: 'Guia CCPA (Califórnia)', ccpaDesc: 'Informações oficiais sobre o CCPA.', coppaTitle: 'FAQ COPPA', coppaDesc: 'Guia da FTC sobre a regra COPPA.', gaTitle: 'Privacidade Google Analytics', gaDesc: 'Informações de privacidade para usuários do Google Analytics.' },
-  whyFree: { badge: 'Filosofia Open Source', title: 'Privacidade não deveria ser um', titleHighlight: 'imposto de luxo', subtitle: 'Acreditamos que todo empreendedor merece proteção legal sem o preço de $5.000.', compareTitle: 'Compare as Opções', compareSubtitle: 'Grátis é realmente melhor?', lawFirm: 'Escritório Tradicional', lawFirmSlow: 'Muito Lento (Semanas)', lawFirmLiability: 'Cobertura de Responsabilidade Completa', lawFirmBilling: 'Cobrança por Hora', templates: 'Templates Genéricos', templatesInstant: 'Download Instantâneo', templatesGeneric: 'Genérico / Desatualizado', templatesNoCustom: 'Sem Personalização', freeGdpr: 'FreeGDPR', freeGdprInstant: 'Rascunho IA Instantâneo', freeGdprTailored: 'Adaptado para Você', freeGdprAlways: 'Sempre Grátis', nextStepTitle: 'Uma Política é Apenas o Primeiro Passo', nextStepDesc: 'Ter um documento te torna conforme no papel. Mas você tem a implementação técnica?', technicalTitle: 'Implementação Técnica', technicalDesc: 'Você configurou o Google Consent Mode v2?', riskTitle: 'Auditoria de Riscos e Necessidades Empresariais', riskDesc: 'Se você lida com dados sensíveis, um gerador gratuito não é suficiente.', ctaTitle: 'Precisa de Implementação Profissional?', ctaDesc: 'Não arrisque multas por má configuração técnica.', ctaButton: 'Contatar Tenten AI Agency', ctaSubtext: 'A Agência AI-First Líder na Ásia' },
+  result: {
+    savedBadge: 'Você acabou de economizar ~$500 em honorários legais!',
+    title: 'Política Gerada com Sucesso',
+    subtitle: 'Seu documento é juridicamente sólido e está pronto para uso. Se esta ferramenta foi útil, considere compartilhá-la.',
+    shareText: 'Acabei de gerar uma política de privacidade completa de graça com FreeGDPR. Confira!',
+    shareTwitter: 'Compartilhar no Twitter',
+    shareLinkedin: 'Compartilhar no LinkedIn',
+    documentPreview: 'Prévia do Documento',
+    showHtml: 'Mostrar HTML',
+    showPreview: 'Mostrar Prévia',
+    copy: 'Copiar',
+    copied: 'Copiado',
+    whatsNext: {
+      title: 'E agora?',
+      steps: [
+        'Copie o texto HTML ou Markdown.',
+        'Crie uma nova página no seu site (ex. /privacidade).',
+        'Link-a a partir do seu rodapé.',
+      ],
+    },
+    makeAdjustments: 'Fazer Ajustes',
+    badge: {
+      title: 'Selo de Confiança Grátis',
+      description: 'Adicione este selo ao rodapé do seu site para mostrar que você se preocupa com a privacidade dos seus usuários.',
+      preview: 'Privacidade verificada pelo FreeGDPR',
+    },
+    disclaimer: 'Aviso: Esta política foi gerada por IA. É fornecida apenas para fins informativos e não constitui aconselhamento jurídico.',
+  },
+  howItWorks: {
+    title: 'Como o FreeGDPR Funciona',
+    subtitle: 'Gere uma política juridicamente sólida em minutos, não dias.',
+    steps: [
+      {
+        title: '1. Insira os Detalhes',
+        description: 'Preencha um questionário simples sobre seu site ou app, práticas de coleta de dados e ferramentas de terceiros.',
+      },
+      {
+        title: '2. Geração IA',
+        description: 'Nossa IA avançada analisa suas entradas e redige uma política de privacidade completa adaptada às suas necessidades.',
+      },
+      {
+        title: '3. Revise a Conformidade',
+        description: 'A política gerada inclui cláusulas para GDPR, CCPA e outros regulamentos com base na sua seleção.',
+      },
+      {
+        title: '4. Baixe e Publique',
+        description: 'Copie o markdown ou baixe o arquivo e publique-o no seu site ou aplicativo móvel.',
+      },
+    ],
+    cta: {
+      title: 'Pronto para proteger seu negócio?',
+      description: 'Inicie o assistente agora e obtenha sua política de privacidade gratuita.',
+    },
+  },
+  legalResources: {
+    title: 'Recursos Legais',
+    subtitle: 'Links úteis para entender os regulamentos de privacidade de dados.',
+    resources: [
+      {
+        title: 'Texto Oficial GDPR',
+        description: 'O texto oficial completo do Regulamento Geral de Proteção de Dados.',
+      },
+      {
+        title: 'Guia CCPA (Califórnia)',
+        description: 'Informações oficiais sobre a Lei de Privacidade do Consumidor da Califórnia.',
+      },
+      {
+        title: 'FAQ COPPA',
+        description: 'Guia da FTC sobre a Regra de Proteção de Privacidade Online das Crianças.',
+      },
+      {
+        title: 'Privacidade Google Analytics',
+        description: 'Informações de privacidade e segurança de dados para usuários do Google Analytics.',
+      },
+    ],
+  },
+  whyFree: {
+    openSourceBadge: 'Filosofia Open Source',
+    title: 'Privacidade não deveria ser um {highlight}.',
+    titleHighlight: 'imposto de luxo',
+    subtitle: 'Acreditamos que todo empreendedor, criador e desenvolvedor merece proteção legal sem o preço de $5.000. Usamos IA para democratizar a conformidade.',
+    comparison: {
+      header: 'Compare as Opções',
+      subheader: 'Grátis é realmente melhor?',
+      lawyer: {
+        title: 'Escritório Tradicional',
+        price: '$500 - $5,000',
+        pros: ['Cobertura de Responsabilidade Completa'],
+        cons: ['Muito Lento (Semanas)', 'Cobrança por Hora'],
+      },
+      template: {
+        title: 'Templates Genéricos',
+        price: '$29 - $99',
+        pros: ['Download Instantâneo'],
+        cons: ['Genérico / Desatualizado', 'Sem Personalização'],
+      },
+      freeGdpr: {
+        title: 'FreeGDPR',
+        price: '$0.00',
+        features: ['Rascunho IA Instantâneo', 'Adaptado para Você', 'Sempre Grátis'],
+      },
+    },
+    professional: {
+      title: 'Uma Política é Apenas o Primeiro Passo',
+      subtitle: 'Ter um documento te torna conforme no papel. Mas você tem a implementação técnica para sustentá-lo?',
+      technical: {
+        title: 'Implementação Técnica',
+        description: 'Você configurou o Google Consent Mode v2? Seus cookies realmente são bloqueados antes do consentimento? Escrever o texto é fácil; codificar a barreira é difícil.',
+      },
+      riskAudit: {
+        title: 'Auditoria de Riscos e Necessidades Empresariais',
+        description: 'Se você lida com dados sensíveis (Saúde, Finanças, Crianças), um gerador gratuito não é suficiente. Você precisa de um especialista humano para auditar seus fluxos de dados.',
+      },
+    },
+    cta: {
+      title: 'Precisa de Implementação Profissional?',
+      description: 'Não arrisque multas por má configuração técnica. Contrate a equipe que construiu esta ferramenta para implementar seus Gerenciadores de Consentimento de Cookies, rastreamento server-side e Governança de Dados.',
+      button: 'Contatar Tenten AI Agency',
+      tagline: 'A Agência AI-First Líder na Ásia',
+    },
+  },
   footer: { copyright: '© {year} FreeGDPR. Todos os direitos reservados.', builtBy: 'Construído com Amor ❤️ por', tentenDesc: 'A Agência AI-First Líder na Ásia', disclaimer: 'Gerador de política de privacidade fornecido apenas para fins informativos.' },
 };
 
@@ -82,9 +550,126 @@ export const ru: TranslationKeys = {
   complianceForm: { title: 'Юридическое соответствие', subtitle: 'Выберите нормативы, которым вы должны соответствовать.', gdpr: 'GDPR (Европа)', gdprDesc: 'Общий регламент защиты данных. Обязателен для пользователей из ЕС.', ccpa: 'CCPA (Калифорния)', ccpaDesc: 'Закон о защите конфиденциальности потребителей Калифорнии.', cpra: 'CPRA (Калифорния дополн.)', cpraDesc: 'Закон о правах на конфиденциальность Калифорнии.', caloppa: 'CalOPPA (Калифорния онлайн)', caloppaDesc: 'Закон о защите конфиденциальности в интернете Калифорнии.', coppa: 'COPPA (Дети)', coppaDesc: 'Закон о защите конфиденциальности детей в интернете.' },
   thirdPartyForm: { title: 'Сторонние сервисы', subtitle: 'Какие внешние инструменты или сервисы взаимодействуют с данными ваших пользователей?', googleAnalytics: 'Google Analytics', googleAdSense: 'Google AdSense', facebookPixel: 'Meta / Facebook Pixel', stripe: 'Платежи Stripe', paypal: 'PayPal', intercom: 'Intercom / Чат' },
   aiThinking: { analyzing: 'Анализ структуры бизнеса...', checking: 'Проверка требований GDPR и CCPA...', formulating: 'Формулирование условий хранения данных...', drafting: 'Составление юридического документа...', poweredBy: 'На базе ИИ', finalizing: 'Завершение структуры документа...' },
-  policyResult: { savedBadge: 'Вы только что сэкономили ~$500 на юридических услугах!', successTitle: 'Политика успешно создана', successDesc: 'Ваш документ юридически надежен и готов к использованию.', documentPreview: 'Предпросмотр документа', showHtml: 'Показать HTML', showPreview: 'Показать предпросмотр', copy: 'Копировать', copied: 'Скопировано', whatsNext: 'Что дальше?', step1: 'Скопируйте текст HTML или Markdown.', step2: 'Создайте новую страницу на сайте (напр. /privacy).', step3: 'Добавьте ссылку в футер.', makeAdjustments: 'Внести изменения', trustBadge: 'Бесплатный знак доверия', trustBadgeDesc: 'Добавьте этот знак в футер вашего сайта.', disclaimer: 'Отказ от ответственности: Эта политика создана ИИ и предоставлена только в информационных целях.' },
-  howItWorks: { title: 'Как работает FreeGDPR', subtitle: 'Создайте юридически надежную политику за минуты, а не дни.', step1Title: '1. Введите данные', step1Desc: 'Заполните простую анкету о вашем сайте или приложении.', step2Title: '2. ИИ-генерация', step2Desc: 'Наш продвинутый ИИ анализирует ваши данные и составляет полную политику.', step3Title: '3. Проверка соответствия', step3Desc: 'Созданная политика включает условия для GDPR, CCPA и других.', step4Title: '4. Скачайте и опубликуйте', step4Desc: 'Скопируйте markdown или скачайте файл.', ctaTitle: 'Готовы защитить свой бизнес?', ctaDesc: 'Начните мастер сейчас.' },
-  legalResources: { title: 'Юридические ресурсы', subtitle: 'Полезные ссылки для понимания правил защиты данных.', gdprTitle: 'Официальный текст GDPR', gdprDesc: 'Полный официальный текст Общего регламента защиты данных.', ccpaTitle: 'Руководство CCPA (Калифорния)', ccpaDesc: 'Официальная информация о CCPA.', coppaTitle: 'FAQ COPPA', coppaDesc: 'Руководство FTC по правилу COPPA.', gaTitle: 'Конфиденциальность Google Analytics', gaDesc: 'Информация о конфиденциальности для пользователей Google Analytics.' },
-  whyFree: { badge: 'Философия открытого кода', title: 'Конфиденциальность не должна быть', titleHighlight: 'налогом на роскошь', subtitle: 'Мы верим, что каждый предприниматель заслуживает юридической защиты без ценника в $5000.', compareTitle: 'Сравните варианты', compareSubtitle: 'Бесплатно действительно лучше?', lawFirm: 'Традиционная юрфирма', lawFirmSlow: 'Очень медленно (недели)', lawFirmLiability: 'Полное покрытие ответственности', lawFirmBilling: 'Почасовая оплата', templates: 'Общие шаблоны', templatesInstant: 'Мгновенная загрузка', templatesGeneric: 'Общий / Устаревший', templatesNoCustom: 'Без настройки', freeGdpr: 'FreeGDPR', freeGdprInstant: 'Мгновенный ИИ-черновик', freeGdprTailored: 'Подобран для вас', freeGdprAlways: 'Всегда бесплатно', nextStepTitle: 'Политика — это только первый шаг', nextStepDesc: 'Документ делает вас соответствующим на бумаге. Но есть ли у вас техническая реализация?', technicalTitle: 'Техническая реализация', technicalDesc: 'Настроен ли у вас Google Consent Mode v2?', riskTitle: 'Аудит рисков и корпоративные потребности', riskDesc: 'Если вы обрабатываете чувствительные данные, бесплатного генератора недостаточно.', ctaTitle: 'Нужна профессиональная реализация?', ctaDesc: 'Не рискуйте штрафами из-за плохой технической настройки.', ctaButton: 'Связаться с Tenten AI Agency', ctaSubtext: 'Ведущее AI-First агентство в Азии' },
+  result: {
+    savedBadge: 'Вы только что сэкономили ~$500 на юридических услугах!',
+    title: 'Политика успешно создана',
+    subtitle: 'Ваш документ юридически надежен и готов к использованию. Если этот инструмент был полезен, поделитесь им.',
+    shareText: 'Я только что создал полную политику конфиденциальности бесплатно с FreeGDPR. Посмотрите!',
+    shareTwitter: 'Поделиться в Twitter',
+    shareLinkedin: 'Поделиться в LinkedIn',
+    documentPreview: 'Предпросмотр документа',
+    showHtml: 'Показать HTML',
+    showPreview: 'Показать предпросмотр',
+    copy: 'Копировать',
+    copied: 'Скопировано',
+    whatsNext: {
+      title: 'Что дальше?',
+      steps: [
+        'Скопируйте текст HTML или Markdown.',
+        'Создайте новую страницу на сайте (напр. /privacy).',
+        'Добавьте ссылку в футер.',
+      ],
+    },
+    makeAdjustments: 'Внести изменения',
+    badge: {
+      title: 'Бесплатный знак доверия',
+      description: 'Добавьте этот знак в футер вашего сайта, чтобы показать, что вы заботитесь о конфиденциальности пользователей.',
+      preview: 'Конфиденциальность подтверждена FreeGDPR',
+    },
+    disclaimer: 'Отказ от ответственности: Эта политика создана ИИ. Она предоставлена только в информационных целях и не является юридической консультацией.',
+  },
+  howItWorks: {
+    title: 'Как работает FreeGDPR',
+    subtitle: 'Создайте юридически надежную политику за минуты, а не дни.',
+    steps: [
+      {
+        title: '1. Введите данные',
+        description: 'Заполните простую анкету о вашем сайте или приложении, практиках сбора данных и сторонних инструментах.',
+      },
+      {
+        title: '2. ИИ-генерация',
+        description: 'Наш продвинутый ИИ анализирует ваши данные и составляет полную политику конфиденциальности, адаптированную к вашим потребностям.',
+      },
+      {
+        title: '3. Проверка соответствия',
+        description: 'Созданная политика включает условия для GDPR, CCPA и других нормативов на основе вашего выбора.',
+      },
+      {
+        title: '4. Скачайте и опубликуйте',
+        description: 'Скопируйте markdown или скачайте файл и опубликуйте его на своем сайте или мобильном приложении.',
+      },
+    ],
+    cta: {
+      title: 'Готовы защитить свой бизнес?',
+      description: 'Начните мастер сейчас и получите бесплатную политику конфиденциальности.',
+    },
+  },
+  legalResources: {
+    title: 'Юридические ресурсы',
+    subtitle: 'Полезные ссылки для понимания правил защиты данных.',
+    resources: [
+      {
+        title: 'Официальный текст GDPR',
+        description: 'Полный официальный текст Общего регламента защиты данных.',
+      },
+      {
+        title: 'Руководство CCPA (Калифорния)',
+        description: 'Официальная информация о Законе о защите конфиденциальности потребителей Калифорнии.',
+      },
+      {
+        title: 'FAQ COPPA',
+        description: 'Руководство FTC по Правилу защиты конфиденциальности детей в интернете.',
+      },
+      {
+        title: 'Конфиденциальность Google Analytics',
+        description: 'Информация о конфиденциальности и безопасности данных для пользователей Google Analytics.',
+      },
+    ],
+  },
+  whyFree: {
+    openSourceBadge: 'Философия открытого кода',
+    title: 'Конфиденциальность не должна быть {highlight}.',
+    titleHighlight: 'налогом на роскошь',
+    subtitle: 'Мы верим, что каждый предприниматель, создатель и разработчик заслуживает юридической защиты без ценника в $5000. Мы использовали ИИ для демократизации соответствия.',
+    comparison: {
+      header: 'Сравните варианты',
+      subheader: 'Бесплатно действительно лучше?',
+      lawyer: {
+        title: 'Традиционная юрфирма',
+        price: '$500 - $5,000',
+        pros: ['Полное покрытие ответственности'],
+        cons: ['Очень медленно (недели)', 'Почасовая оплата'],
+      },
+      template: {
+        title: 'Общие шаблоны',
+        price: '$29 - $99',
+        pros: ['Мгновенная загрузка'],
+        cons: ['Общий / Устаревший', 'Без настройки'],
+      },
+      freeGdpr: {
+        title: 'FreeGDPR',
+        price: '$0.00',
+        features: ['Мгновенный ИИ-черновик', 'Подобран для вас', 'Всегда бесплатно'],
+      },
+    },
+    professional: {
+      title: 'Политика — это только первый шаг',
+      subtitle: 'Документ делает вас соответствующим на бумаге. Но есть ли у вас техническая реализация для его поддержки?',
+      technical: {
+        title: 'Техническая реализация',
+        description: 'Настроен ли у вас Google Consent Mode v2? Действительно ли ваши cookies блокируются до получения согласия? Написать текст легко; закодировать барьер сложно.',
+      },
+      riskAudit: {
+        title: 'Аудит рисков и корпоративные потребности',
+        description: 'Если вы обрабатываете конфиденциальные данные (Здоровье, Финансы, Дети), бесплатного генератора недостаточно. Вам нужен человек-эксперт для аудита ваших потоков данных.',
+      },
+    },
+    cta: {
+      title: 'Нужна профессиональная реализация?',
+      description: 'Не рискуйте штрафами из-за плохой технической настройки. Наймите команду, которая создала этот инструмент, для внедрения ваших Менеджеров согласия на cookies, серверного отслеживания и Управления данными.',
+      button: 'Связаться с Tenten AI Agency',
+      tagline: 'Ведущее AI-First агентство в Азии',
+    },
+  },
   footer: { copyright: '© {year} FreeGDPR. Все права защищены.', builtBy: 'Создано с любовью ❤️', tentenDesc: 'Ведущее AI-First агентство в Азии', disclaimer: 'Генератор политики конфиденциальности предоставлен только в информационных целях.' },
 };
