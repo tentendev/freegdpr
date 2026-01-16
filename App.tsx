@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Shield, 
-  ChevronRight, 
-  ChevronLeft, 
-  Layout, 
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import {
+  Shield,
+  ChevronRight,
+  ChevronLeft,
+  Layout,
   Database,
   Scale,
   Settings2,
   Sparkles,
   CheckCircle2,
-  Cpu,
   Loader2,
   BrainCircuit,
   FileText,
@@ -23,10 +24,12 @@ import { HowItWorks } from './components/HowItWorks';
 import { LegalResources } from './components/LegalResources';
 import { CountrySelector } from './components/CountrySelector';
 import { WhyFreeGDPR } from './components/WhyFreeGDPR';
-import { LanguageSelector } from './components/LanguageSelector';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { SEOHead } from './components/SEOHead';
+import { I18nProvider, useI18n } from './i18n/I18nContext';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, LanguageCode } from './i18n';
 
 // --- Reusable Input Components ---
-
 const SectionTitle = ({ title, subtitle, icon: Icon }: { title: string, subtitle: string, icon: any }) => (
   <div className="mb-6">
     <div className="flex items-center gap-3 mb-2">
@@ -46,18 +49,18 @@ const InputGroup = ({ label, children }: { label: string, children?: React.React
   </div>
 );
 
-const CheckboxCard = ({ 
-  checked, 
-  onChange, 
-  title, 
-  description 
-}: { 
-  checked: boolean, 
-  onChange: (c: boolean) => void, 
-  title: string, 
-  description?: string 
+const CheckboxCard = ({
+  checked,
+  onChange,
+  title,
+  description
+}: {
+  checked: boolean,
+  onChange: (c: boolean) => void,
+  title: string,
+  description?: string
 }) => (
-  <div 
+  <div
     onClick={() => onChange(!checked)}
     className={`p-4 border rounded-xl cursor-pointer transition-all duration-200 flex items-start gap-3
       ${checked ? 'border-brand-500 bg-brand-50 shadow-md ring-1 ring-brand-200' : 'border-slate-200 hover:border-brand-300 hover:bg-slate-50'}
@@ -75,27 +78,47 @@ const CheckboxCard = ({
   </div>
 );
 
+// Policy Language Selector for generated policy language
+const PolicyLanguageSelector = ({ value, onChange }: { value: string, onChange: (v: string) => void }) => {
+  const { languages } = useI18n();
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white text-slate-900"
+    >
+      {languages.map((lang) => (
+        <option key={lang.code} value={lang.policyLanguage}>
+          {lang.flag} {lang.policyLanguage}
+        </option>
+      ))}
+    </select>
+  );
+};
+
 type Page = 'home' | 'how-it-works' | 'resources' | 'why-free-gdpr';
 
-// --- Main App ---
+// --- Main App Content ---
+function AppContent() {
+  const { t, lang, localizedPath } = useI18n();
+  const navigate = useNavigate();
 
-export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<PolicyFormData>(initialFormData);
   const [status, setStatus] = useState<GenerationStatus>('idle');
   const [policyContent, setPolicyContent] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string>('');
-  
+
   // AI Thinking State
   const [thinkingStep, setThinkingStep] = useState(0);
   const thinkingIntervalRef = useRef<number | null>(null);
 
   const aiThinkingSteps = [
-    { text: "Analyzing business structure...", icon: BrainCircuit },
-    { text: "Checking GDPR & CCPA requirements...", icon: SearchCheck },
-    { text: "Formulating data retention clauses...", icon: Database },
-    { text: "Drafting legal document...", icon: FileText },
+    { text: t.aiThinking.analyzing, icon: BrainCircuit },
+    { text: t.aiThinking.checking, icon: SearchCheck },
+    { text: t.aiThinking.formulating, icon: Database },
+    { text: t.aiThinking.drafting, icon: FileText },
   ];
 
   // Load from local storage on mount
@@ -131,10 +154,10 @@ export default function App() {
   }, [status, policyContent.length]);
 
   const steps = [
-    "General Info",
-    "Data Collection",
-    "Compliance",
-    "Third Party"
+    t.steps.generalInfo,
+    t.steps.dataCollection,
+    t.steps.compliance,
+    t.steps.thirdParty
   ];
 
   const updateField = <K extends keyof PolicyFormData>(key: K, value: PolicyFormData[K]) => {
@@ -143,6 +166,13 @@ export default function App() {
 
   const navigateTo = (page: Page) => {
     setCurrentPage(page);
+    const paths: Record<Page, string> = {
+      'home': '/',
+      'how-it-works': '/how-it-works',
+      'resources': '/resources',
+      'why-free-gdpr': '/why-free-gdpr'
+    };
+    navigate(localizedPath(paths[page]));
     window.scrollTo(0, 0);
   };
 
@@ -164,9 +194,9 @@ export default function App() {
 
   const handleGenerate = async () => {
     setStatus('generating');
-    setPolicyContent(''); // Reset content
+    setPolicyContent('');
     setErrorMsg('');
-    
+
     try {
       let currentText = '';
       await generatePrivacyPolicyStream(formData, (chunk) => {
@@ -190,80 +220,83 @@ export default function App() {
       case 0:
         return (
           <div className="space-y-6 animate-fade-in">
-            <SectionTitle 
-              title="General Information" 
-              subtitle="Let's start with the basics about your business or project."
+            <SectionTitle
+              title={t.generalInfoForm.title}
+              subtitle={t.generalInfoForm.subtitle}
               icon={Layout}
             />
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <InputGroup label="Company/Entity Name">
-                <input 
-                  type="text" 
+              <InputGroup label={t.generalInfoForm.companyName}>
+                <input
+                  type="text"
                   className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
-                  placeholder="e.g. Acme Corp LLC"
+                  placeholder={t.generalInfoForm.companyNamePlaceholder}
                   value={formData.companyName}
                   onChange={(e) => updateField('companyName', e.target.value)}
                 />
               </InputGroup>
 
-              <InputGroup label="Website/App Name">
-                <input 
-                  type="text" 
+              <InputGroup label={t.generalInfoForm.websiteName}>
+                <input
+                  type="text"
                   className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
-                  placeholder="e.g. My Awesome App"
+                  placeholder={t.generalInfoForm.websiteNamePlaceholder}
                   value={formData.websiteName}
                   onChange={(e) => updateField('websiteName', e.target.value)}
                 />
               </InputGroup>
 
-              <InputGroup label="Website URL">
-                <input 
-                  type="url" 
+              <InputGroup label={t.generalInfoForm.websiteUrl}>
+                <input
+                  type="url"
                   className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
-                  placeholder="https://example.com"
+                  placeholder={t.generalInfoForm.websiteUrlPlaceholder}
                   value={formData.websiteUrl}
                   onChange={(e) => updateField('websiteUrl', e.target.value)}
                 />
               </InputGroup>
 
-              <InputGroup label="Contact Email">
-                <input 
-                  type="email" 
+              <InputGroup label={t.generalInfoForm.contactEmail}>
+                <input
+                  type="email"
                   className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
-                  placeholder="privacy@example.com"
+                  placeholder={t.generalInfoForm.contactEmailPlaceholder}
                   value={formData.contactEmail}
                   onChange={(e) => updateField('contactEmail', e.target.value)}
                 />
               </InputGroup>
 
-              <InputGroup label="Country">
-                <CountrySelector 
+              <InputGroup label={t.generalInfoForm.country}>
+                <CountrySelector
                   value={formData.country}
                   onChange={(val) => updateField('country', val)}
                 />
               </InputGroup>
 
-              <InputGroup label="Policy Language">
-                <LanguageSelector 
+              <InputGroup label={t.generalInfoForm.policyLanguage}>
+                <PolicyLanguageSelector
                   value={formData.language}
                   onChange={(val) => updateField('language', val)}
                 />
               </InputGroup>
 
-               <InputGroup label="Platform Type">
+              <InputGroup label={t.generalInfoForm.platformType}>
                 <div className="flex gap-4">
-                  {[AppType.WEBSITE, AppType.MOBILE_APP, AppType.BOTH].map((type) => (
+                  {[
+                    { type: AppType.WEBSITE, label: t.generalInfoForm.website },
+                    { type: AppType.MOBILE_APP, label: t.generalInfoForm.mobileApp },
+                    { type: AppType.BOTH, label: t.generalInfoForm.both }
+                  ].map(({ type, label }) => (
                     <button
                       key={type}
                       onClick={() => updateField('appType', type)}
-                      className={`flex-1 py-2 px-3 rounded-lg border text-sm font-medium transition-all ${
-                        formData.appType === type 
-                          ? 'bg-brand-50 border-brand-500 text-brand-700 shadow-sm' 
-                          : 'border-slate-200 hover:border-brand-200 text-slate-600 bg-white hover:bg-slate-50'
-                      }`}
+                      className={`flex-1 py-2 px-3 rounded-lg border text-sm font-medium transition-all ${formData.appType === type
+                        ? 'bg-brand-50 border-brand-500 text-brand-700 shadow-sm'
+                        : 'border-slate-200 hover:border-brand-200 text-slate-600 bg-white hover:bg-slate-50'
+                        }`}
                     >
-                      {type}
+                      {label}
                     </button>
                   ))}
                 </div>
@@ -274,144 +307,47 @@ export default function App() {
       case 1:
         return (
           <div className="space-y-6 animate-fade-in">
-             <SectionTitle 
-              title="Data Collection" 
-              subtitle="What kind of information do you collect from your users?"
+            <SectionTitle
+              title={t.dataCollectionForm.title}
+              subtitle={t.dataCollectionForm.subtitle}
               icon={Database}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <CheckboxCard 
-                title="Email Addresses" 
-                description="For newsletters, account creation, or support."
-                checked={formData.collectsEmail}
-                onChange={(v) => updateField('collectsEmail', v)}
-              />
-              <CheckboxCard 
-                title="Personal Names" 
-                description="First and last names of users."
-                checked={formData.collectsNames}
-                onChange={(v) => updateField('collectsNames', v)}
-              />
-               <CheckboxCard 
-                title="Cookies & Tracking" 
-                description="Standard web cookies for analytics or preferences."
-                checked={formData.collectsCookies}
-                onChange={(v) => updateField('collectsCookies', v)}
-              />
-              <CheckboxCard 
-                title="Payment Info" 
-                description="Credit card numbers, billing addresses."
-                checked={formData.collectsPayment}
-                onChange={(v) => updateField('collectsPayment', v)}
-              />
-              <CheckboxCard 
-                title="Phone Numbers" 
-                description="For SMS notifications or contact."
-                checked={formData.collectsPhone}
-                onChange={(v) => updateField('collectsPhone', v)}
-              />
-              <CheckboxCard 
-                title="Physical Addresses" 
-                description="Shipping or billing addresses."
-                checked={formData.collectsAddress}
-                onChange={(v) => updateField('collectsAddress', v)}
-              />
-               <CheckboxCard 
-                title="Geolocation" 
-                description="GPS data or precise location tracking."
-                checked={formData.collectsLocation}
-                onChange={(v) => updateField('collectsLocation', v)}
-              />
-              <CheckboxCard 
-                title="Device Data" 
-                description="IP address, device ID, browser type."
-                checked={formData.collectsDeviceData}
-                onChange={(v) => updateField('collectsDeviceData', v)}
-              />
+              <CheckboxCard title={t.dataCollectionForm.emailAddresses} description={t.dataCollectionForm.emailDesc} checked={formData.collectsEmail} onChange={(v) => updateField('collectsEmail', v)} />
+              <CheckboxCard title={t.dataCollectionForm.personalNames} description={t.dataCollectionForm.namesDesc} checked={formData.collectsNames} onChange={(v) => updateField('collectsNames', v)} />
+              <CheckboxCard title={t.dataCollectionForm.cookies} description={t.dataCollectionForm.cookiesDesc} checked={formData.collectsCookies} onChange={(v) => updateField('collectsCookies', v)} />
+              <CheckboxCard title={t.dataCollectionForm.paymentInfo} description={t.dataCollectionForm.paymentDesc} checked={formData.collectsPayment} onChange={(v) => updateField('collectsPayment', v)} />
+              <CheckboxCard title={t.dataCollectionForm.phoneNumbers} description={t.dataCollectionForm.phoneDesc} checked={formData.collectsPhone} onChange={(v) => updateField('collectsPhone', v)} />
+              <CheckboxCard title={t.dataCollectionForm.physicalAddresses} description={t.dataCollectionForm.addressDesc} checked={formData.collectsAddress} onChange={(v) => updateField('collectsAddress', v)} />
+              <CheckboxCard title={t.dataCollectionForm.geolocation} description={t.dataCollectionForm.locationDesc} checked={formData.collectsLocation} onChange={(v) => updateField('collectsLocation', v)} />
+              <CheckboxCard title={t.dataCollectionForm.deviceData} description={t.dataCollectionForm.deviceDesc} checked={formData.collectsDeviceData} onChange={(v) => updateField('collectsDeviceData', v)} />
             </div>
           </div>
         );
       case 2:
         return (
           <div className="space-y-6 animate-fade-in">
-            <SectionTitle 
-              title="Legal Compliance" 
-              subtitle="Select the regulations you need to comply with based on your user base."
-              icon={Scale}
-            />
+            <SectionTitle title={t.complianceForm.title} subtitle={t.complianceForm.subtitle} icon={Scale} />
             <div className="grid grid-cols-1 gap-4">
-              <CheckboxCard 
-                title="GDPR (Europe)" 
-                description="General Data Protection Regulation. Essential if you have users in the EU."
-                checked={formData.complianceGDPR}
-                onChange={(v) => updateField('complianceGDPR', v)}
-              />
-              <CheckboxCard 
-                title="CCPA (California)" 
-                description="California Consumer Privacy Act. Required for California residents."
-                checked={formData.complianceCCPA}
-                onChange={(v) => updateField('complianceCCPA', v)}
-              />
-               <CheckboxCard 
-                title="CPRA (California Amended)" 
-                description="California Privacy Rights Act. The update to CCPA."
-                checked={formData.complianceCPRA}
-                onChange={(v) => updateField('complianceCPRA', v)}
-              />
-              <CheckboxCard 
-                title="CalOPPA (California Online)" 
-                description="California Online Privacy Protection Act. Broad requirement for commercial sites."
-                checked={formData.complianceCalOPPA}
-                onChange={(v) => updateField('complianceCalOPPA', v)}
-              />
-               <CheckboxCard 
-                title="COPPA (Children)" 
-                description="Children's Online Privacy Protection Act. If you target children under 13."
-                checked={formData.complianceCOPPA}
-                onChange={(v) => updateField('complianceCOPPA', v)}
-              />
+              <CheckboxCard title={t.complianceForm.gdpr} description={t.complianceForm.gdprDesc} checked={formData.complianceGDPR} onChange={(v) => updateField('complianceGDPR', v)} />
+              <CheckboxCard title={t.complianceForm.ccpa} description={t.complianceForm.ccpaDesc} checked={formData.complianceCCPA} onChange={(v) => updateField('complianceCCPA', v)} />
+              <CheckboxCard title={t.complianceForm.cpra} description={t.complianceForm.cpraDesc} checked={formData.complianceCPRA} onChange={(v) => updateField('complianceCPRA', v)} />
+              <CheckboxCard title={t.complianceForm.caloppa} description={t.complianceForm.caloppaDesc} checked={formData.complianceCalOPPA} onChange={(v) => updateField('complianceCalOPPA', v)} />
+              <CheckboxCard title={t.complianceForm.coppa} description={t.complianceForm.coppaDesc} checked={formData.complianceCOPPA} onChange={(v) => updateField('complianceCOPPA', v)} />
             </div>
           </div>
         );
       case 3:
         return (
           <div className="space-y-6 animate-fade-in">
-            <SectionTitle 
-              title="Third-Party Services" 
-              subtitle="Which external tools or services interact with your user data?"
-              icon={Settings2}
-            />
+            <SectionTitle title={t.thirdPartyForm.title} subtitle={t.thirdPartyForm.subtitle} icon={Settings2} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <CheckboxCard 
-                title="Google Analytics" 
-                checked={formData.usesGoogleAnalytics}
-                onChange={(v) => updateField('usesGoogleAnalytics', v)}
-              />
-              <CheckboxCard 
-                title="Google AdSense" 
-                checked={formData.usesGoogleAdSense}
-                onChange={(v) => updateField('usesGoogleAdSense', v)}
-              />
-              <CheckboxCard 
-                title="Meta / Facebook Pixel" 
-                checked={formData.usesFacebookPixel}
-                onChange={(v) => updateField('usesFacebookPixel', v)}
-              />
-              <CheckboxCard 
-                title="Stripe Payments" 
-                checked={formData.usesStripe}
-                onChange={(v) => updateField('usesStripe', v)}
-              />
-              <CheckboxCard 
-                title="PayPal" 
-                checked={formData.usesPayPal}
-                onChange={(v) => updateField('usesPayPal', v)}
-              />
-              <CheckboxCard 
-                title="Intercom / Chat" 
-                checked={formData.usesIntercom}
-                onChange={(v) => updateField('usesIntercom', v)}
-              />
+              <CheckboxCard title={t.thirdPartyForm.googleAnalytics} checked={formData.usesGoogleAnalytics} onChange={(v) => updateField('usesGoogleAnalytics', v)} />
+              <CheckboxCard title={t.thirdPartyForm.googleAdSense} checked={formData.usesGoogleAdSense} onChange={(v) => updateField('usesGoogleAdSense', v)} />
+              <CheckboxCard title={t.thirdPartyForm.facebookPixel} checked={formData.usesFacebookPixel} onChange={(v) => updateField('usesFacebookPixel', v)} />
+              <CheckboxCard title={t.thirdPartyForm.stripe} checked={formData.usesStripe} onChange={(v) => updateField('usesStripe', v)} />
+              <CheckboxCard title={t.thirdPartyForm.paypal} checked={formData.usesPayPal} onChange={(v) => updateField('usesPayPal', v)} />
+              <CheckboxCard title={t.thirdPartyForm.intercom} checked={formData.usesIntercom} onChange={(v) => updateField('usesIntercom', v)} />
             </div>
           </div>
         );
@@ -421,19 +357,19 @@ export default function App() {
   };
 
   const renderHomeContent = () => {
-    // Show results if success OR if generating (to show the stream)
     if (status === 'success' || (status === 'generating' && policyContent.length > 0)) {
       return (
         <div className="min-h-screen bg-slate-50 py-12 px-4">
-           <div className="max-w-5xl mx-auto mb-8 text-center">
-              <div className="flex items-center justify-center gap-2 mb-2 text-brand-600">
-                <Shield size={40} className="fill-current" />
-                <span className="text-2xl font-bold tracking-tight text-slate-900">FreeGDPR</span>
-              </div>
-              {status === 'generating' && (
-                <p className="text-slate-500 animate-pulse">Finalizing document structure...</p>
-              )}
-           </div>
+          <SEOHead page="home" />
+          <div className="max-w-5xl mx-auto mb-8 text-center">
+            <div className="flex items-center justify-center gap-2 mb-2 text-brand-600">
+              <Shield size={40} className="fill-current" />
+              <span className="text-2xl font-bold tracking-tight text-slate-900">FreeGDPR</span>
+            </div>
+            {status === 'generating' && (
+              <p className="text-slate-500 animate-pulse">{t.aiThinking.finalizing}</p>
+            )}
+          </div>
           <div className="max-w-5xl mx-auto">
             <PolicyResult content={policyContent} onBack={resetToEdit} />
           </div>
@@ -443,103 +379,92 @@ export default function App() {
 
     return (
       <>
-        {/* Compact, Tech-Forward Hero Section */}
+        <SEOHead page="home" />
         {currentStep === 0 && (
           <div className="relative overflow-hidden bg-slate-50 border-b border-slate-200">
-            {/* Abstract Tech Background */}
             <div className="absolute inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#4f46e5 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
             <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/0 to-white"></div>
-            
+
             <div className="relative z-10 max-w-4xl mx-auto px-4 py-8 text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-brand-100 text-brand-700 text-xs font-medium mb-4 shadow-sm backdrop-blur-sm animate-fade-in">
-                <Cpu size={14} className="text-brand-500" />
-                <span>AI-Powered Legal Tech</span>
+                <span>{t.hero.badge}</span>
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-2">
-                FreeGDPR
+                {t.hero.title}
                 <span className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-violet-600">
-                   Privacy Policy Generator
+                  {t.hero.titleHighlight}
                 </span>
               </h1>
-              
+
               <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
-                Generate compliant policies for CCPA, GDPR, Google Analytics & AdSense in seconds using advanced AI.
+                {t.hero.subtitle}
               </p>
             </div>
           </div>
         )}
 
-        {/* Main Content */}
         <main className="flex-grow py-8 px-4">
           <div className="max-w-3xl mx-auto">
-            
-            {/* Progress */}
             <StepIndicators currentStep={currentStep} totalSteps={steps.length} steps={steps} />
 
-            {/* Form Container */}
             <div className="bg-white rounded-2xl shadow-xl border border-slate-100 relative transition-all duration-300">
-              
-              {/* Detailed AI Thinking Overlay */}
               {status === 'generating' && policyContent.length === 0 && (
                 <div className="absolute inset-0 bg-white/95 z-50 flex flex-col items-center justify-center backdrop-blur-sm rounded-2xl p-8 text-center animate-in fade-in duration-300">
                   <div className="relative mb-8">
-                     <div className="absolute inset-0 bg-brand-200 rounded-full blur-xl opacity-50 animate-pulse"></div>
-                     <BrainCircuit size={64} className="text-brand-600 relative z-10 animate-bounce-subtle" />
+                    <div className="absolute inset-0 bg-brand-200 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <BrainCircuit size={64} className="text-brand-600 relative z-10 animate-bounce-subtle" />
                   </div>
-                  
+
                   <div className="space-y-4 max-w-md w-full">
                     {aiThinkingSteps.map((step, index) => (
-                      <div 
+                      <div
                         key={index}
-                        className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-500 ${
-                          index === thinkingStep 
-                            ? 'bg-brand-50 border-brand-200 scale-105 shadow-sm' 
-                            : index < thinkingStep
-                              ? 'bg-slate-50 border-slate-100 opacity-50'
-                              : 'bg-transparent border-transparent opacity-30 blur-[1px]'
-                        }`}
+                        className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-500 ${index === thinkingStep
+                          ? 'bg-brand-50 border-brand-200 scale-105 shadow-sm'
+                          : index < thinkingStep
+                            ? 'bg-slate-50 border-slate-100 opacity-50'
+                            : 'bg-transparent border-transparent opacity-30 blur-[1px]'
+                          }`}
                       >
-                         <div className={`p-2 rounded-full ${index === thinkingStep ? 'bg-brand-100 text-brand-600' : 'bg-slate-100 text-slate-400'}`}>
-                           {index < thinkingStep ? <CheckCircle2 size={16} /> : (index === thinkingStep ? <Loader2 size={16} className="animate-spin" /> : <step.icon size={16} />)}
-                         </div>
-                         <span className={`text-sm font-medium ${index === thinkingStep ? 'text-brand-900' : 'text-slate-500'}`}>
-                           {step.text}
-                         </span>
+                        <div className={`p-2 rounded-full ${index === thinkingStep ? 'bg-brand-100 text-brand-600' : 'bg-slate-100 text-slate-400'}`}>
+                          {index < thinkingStep ? <CheckCircle2 size={16} /> : (index === thinkingStep ? <Loader2 size={16} className="animate-spin" /> : <step.icon size={16} />)}
+                        </div>
+                        <span className={`text-sm font-medium ${index === thinkingStep ? 'text-brand-900' : 'text-slate-500'}`}>
+                          {step.text}
+                        </span>
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs text-slate-400 mt-8">Powered by Google Gemini AI</p>
+                  <p className="text-xs text-slate-400 mt-8">{t.aiThinking.poweredBy}</p>
                 </div>
               )}
-              
-              {/* Error Message */}
+
               {status === 'error' && (
-                 <div className="mx-6 mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-center gap-3">
-                    <div className="shrink-0 font-bold">Error:</div>
-                    <div>{errorMsg}</div>
-                 </div>
+                <div className="mx-6 mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-center gap-3">
+                  <div className="shrink-0 font-bold">Error:</div>
+                  <div>{errorMsg}</div>
+                </div>
               )}
 
               <div className="p-6 md:p-8 min-h-[400px]">
                 {renderStepContent()}
               </div>
 
-              {/* Footer Navigation */}
               <div className="bg-slate-50 p-6 border-t border-slate-100 flex justify-between items-center rounded-b-2xl">
-                <button 
+                <button
                   onClick={handleBack}
                   disabled={currentStep === 0 || status === 'generating'}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-colors
-                    ${currentStep === 0 
-                      ? 'text-slate-300 cursor-not-allowed' 
+                    ${currentStep === 0
+                      ? 'text-slate-300 cursor-not-allowed'
                       : 'text-slate-600 hover:bg-slate-200 hover:text-slate-900'}`}
                 >
                   <ChevronLeft size={20} />
-                  Back
+                  {t.steps.back}
                 </button>
 
-                <button 
+                <button
                   onClick={handleNext}
                   disabled={status === 'generating'}
                   className="flex items-center gap-2 px-8 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium shadow-lg shadow-brand-500/30 transition-all transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
@@ -547,11 +472,11 @@ export default function App() {
                   {currentStep === steps.length - 1 ? (
                     <>
                       <Sparkles size={20} />
-                      Generate Policy
+                      {t.steps.generatePolicy}
                     </>
                   ) : (
                     <>
-                      Next Step
+                      {t.steps.nextStep}
                       <ChevronRight size={20} />
                     </>
                   )}
@@ -566,11 +491,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900">
-      
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div 
+          <div
             className="flex items-center gap-2 text-brand-600 cursor-pointer"
             onClick={() => navigateTo('home')}
           >
@@ -578,58 +502,111 @@ export default function App() {
             <span className="text-xl font-bold tracking-tight text-slate-900">FreeGDPR</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-            <button 
+            <button
               onClick={() => navigateTo('home')}
               className={`hover:text-brand-600 transition-colors ${currentPage === 'home' ? 'text-brand-600' : ''}`}
             >
-              Generator
+              {t.header.generator}
             </button>
-             <button 
+            <button
               onClick={() => navigateTo('why-free-gdpr')}
               className={`hover:text-brand-600 transition-colors ${currentPage === 'why-free-gdpr' ? 'text-brand-600' : ''}`}
             >
-              Why Free?
+              {t.header.whyFree}
             </button>
-            <button 
+            <button
               onClick={() => navigateTo('how-it-works')}
               className={`hover:text-brand-600 transition-colors ${currentPage === 'how-it-works' ? 'text-brand-600' : ''}`}
             >
-              How it Works
+              {t.header.howItWorks}
             </button>
-            <button 
+            <button
               onClick={() => navigateTo('resources')}
               className={`hover:text-brand-600 transition-colors ${currentPage === 'resources' ? 'text-brand-600' : ''}`}
             >
-              Legal Resources
+              {t.header.resources}
             </button>
 
-            {/* Language Selector in Header */}
             <div className="pl-4 border-l border-slate-200">
-              <LanguageSelector 
-                value={formData.language} 
-                onChange={(val) => updateField('language', val)}
-                variant="header"
-              />
+              <LanguageSwitcher variant="header" />
             </div>
+          </div>
 
+          {/* Mobile language switcher */}
+          <div className="md:hidden">
+            <LanguageSwitcher variant="header" />
           </div>
         </div>
       </header>
 
       {/* Dynamic Content */}
       {currentPage === 'home' && renderHomeContent()}
-      {currentPage === 'why-free-gdpr' && <WhyFreeGDPR />}
-      {currentPage === 'how-it-works' && <HowItWorks />}
-      {currentPage === 'resources' && <LegalResources />}
+      {currentPage === 'why-free-gdpr' && (
+        <>
+          <SEOHead page="why-free-gdpr" />
+          <WhyFreeGDPR />
+        </>
+      )}
+      {currentPage === 'how-it-works' && (
+        <>
+          <SEOHead page="how-it-works" />
+          <HowItWorks />
+        </>
+      )}
+      {currentPage === 'resources' && (
+        <>
+          <SEOHead page="resources" />
+          <LegalResources />
+        </>
+      )}
 
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 py-8 mt-auto">
         <div className="max-w-6xl mx-auto px-4 text-center text-slate-500 text-sm">
-          <p className="mb-2">© {new Date().getFullYear()} FreeGDPR. All rights reserved.</p>
-          <p className="mb-2">© Built with Love ❤️ by <a href="https://tenten.co" target="_blank" rel="noopener noreferrer" className="hover:text-brand-600 transition-colors">Tenten AI</a> | The Leading AI-First Agency in Asia</p>
-          <p>Privacy Policy Generator provided for informational purposes only.</p>
+          <p className="mb-2">{t.footer.copyright.replace('{year}', new Date().getFullYear().toString())}</p>
+          <p className="mb-2">{t.footer.builtBy} <a href="https://tenten.co" target="_blank" rel="noopener noreferrer" className="hover:text-brand-600 transition-colors">Tenten AI</a> | {t.footer.tentenDesc}</p>
+          <p>{t.footer.disclaimer}</p>
         </div>
       </footer>
     </div>
+  );
+}
+
+// Page wrapper that syncs URL to page state
+function PageWrapper() {
+  return (
+    <I18nProvider>
+      <AppContent />
+    </I18nProvider>
+  );
+}
+
+// Main App with Router
+export default function App() {
+  return (
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Default language routes */}
+          <Route path="/" element={<PageWrapper />} />
+          <Route path="/how-it-works" element={<PageWrapper />} />
+          <Route path="/resources" element={<PageWrapper />} />
+          <Route path="/why-free-gdpr" element={<PageWrapper />} />
+
+          {/* Language-prefixed routes */}
+          {SUPPORTED_LANGUAGES.filter(l => l.code !== DEFAULT_LANGUAGE).map(lang => (
+            <React.Fragment key={lang.code}>
+              <Route path={`/${lang.code}`} element={<PageWrapper />} />
+              <Route path={`/${lang.code}/how-it-works`} element={<PageWrapper />} />
+              <Route path={`/${lang.code}/resources`} element={<PageWrapper />} />
+              <Route path={`/${lang.code}/why-free-gdpr`} element={<PageWrapper />} />
+            </React.Fragment>
+          ))}
+
+          {/* Catch all - redirect to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

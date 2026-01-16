@@ -3,9 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FreeGDPR - Privacy policy generator</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Primary Meta Tags -->
+    <title>FreeGDPR - Free AI Privacy Policy Generator | GDPR & CCPA Compliant</title>
+    <meta name="title" content="FreeGDPR - Free AI Privacy Policy Generator | GDPR & CCPA Compliant" />
+    <meta name="description" content="Generate GDPR, CCPA compliant privacy policies for free using AI. Instant, customized, legally robust privacy policies for your website or app. Supports 10+ languages." />
+    <meta name="keywords" content="privacy policy generator, GDPR, CCPA, free privacy policy, AI privacy policy, GDPR compliance, privacy policy template, data protection" />
+    <meta name="author" content="Tenten AI" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://freegdpr.com/" />
+    <meta property="og:title" content="FreeGDPR - Free AI Privacy Policy Generator" />
+    <meta property="og:description" content="Generate GDPR, CCPA compliant privacy policies for free using AI. Instant, customized, legally robust privacy policies." />
+    <meta property="og:site_name" content="FreeGDPR" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://freegdpr.com/" />
+    <meta name="twitter:title" content="FreeGDPR - Free AI Privacy Policy Generator" />
+    <meta name="twitter:description" content="Generate GDPR, CCPA compliant privacy policies for free using AI." />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://freegdpr.com/" />
+
+    <!-- Hreflang tags for international SEO -->
+    <link rel="alternate" hreflang="en" href="https://freegdpr.com/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://freegdpr.com/zh-CN/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://freegdpr.com/zh-TW/" />
+    <link rel="alternate" hreflang="ja" href="https://freegdpr.com/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://freegdpr.com/ko/" />
+    <link rel="alternate" hreflang="es" href="https://freegdpr.com/es/" />
+    <link rel="alternate" hreflang="fr" href="https://freegdpr.com/fr/" />
+    <link rel="alternate" hreflang="de" href="https://freegdpr.com/de/" />
+    <link rel="alternate" hreflang="pt" href="https://freegdpr.com/pt/" />
+    <link rel="alternate" hreflang="ru" href="https://freegdpr.com/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://freegdpr.com/" />
+
+    <!-- Geo Meta Tags for Local SEO -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="San Francisco" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -31,33 +81,64 @@
         },
       }
     </script>
+
     <style>
-        /* Custom scrollbar for generated content */
-        .policy-content h1 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 700; margin-bottom: 1rem; color: #111827; }
-        .policy-content h2 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #1f2937; }
-        .policy-content h3 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #374151; }
-        .policy-content p { margin-bottom: 1rem; color: #4b5563; line-height: 1.625; }
-        .policy-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #4b5563; }
-        .policy-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; color: #4b5563; }
-        .policy-content li { margin-bottom: 0.25rem; }
-        .policy-content strong { font-weight: 600; color: #111827; }
+      /* Custom scrollbar for generated content */
+      .policy-content h1 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 700; margin-bottom: 1rem; color: #111827; }
+      .policy-content h2 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #1f2937; }
+      .policy-content h3 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #374151; }
+      .policy-content p { margin-bottom: 1rem; color: #4b5563; line-height: 1.625; }
+      .policy-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #4b5563; }
+      .policy-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; color: #4b5563; }
+      .policy-content li { margin-bottom: 0.25rem; }
+      .policy-content strong { font-weight: 600; color: #111827; }
+
+      /* Animations */
+      @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+      .animate-fade-in { animation: fade-in 0.3s ease-out; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "react-markdown": "https://esm.sh/react-markdown@^10.1.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react-markdown": "https://esm.sh/react-markdown@^10.1.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.1.1",
+        "react-helmet-async": "https://esm.sh/react-helmet-async@^2.0.5"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/index.css">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FreeGDPR",
+      "description": "Free AI-powered privacy policy generator for GDPR and CCPA compliance",
+      "url": "https://freegdpr.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Tenten AI",
+        "url": "https://tenten.co"
+      },
+      "inLanguage": ["en", "zh-CN", "zh-TW", "ja", "ko", "es", "fr", "de", "pt", "ru"]
+    }
+    </script>
+  </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
