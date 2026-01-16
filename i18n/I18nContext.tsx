@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getTranslation, buildLocalizedPath, SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, LanguageCode, TranslationKeys } from './index';
 
 interface I18nContextType {
@@ -12,18 +12,24 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
+// Extract language from pathname
+function getLangFromPath(pathname: string): LanguageCode {
+  const segments = pathname.split('/').filter(Boolean);
+  const firstSegment = segments[0] as LanguageCode;
+
+  if (firstSegment && SUPPORTED_LANGUAGES.some(l => l.code === firstSegment)) {
+    return firstSegment;
+  }
+  return DEFAULT_LANGUAGE;
+}
+
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const params = useParams<{ lang?: string }>();
   const navigate = useNavigate();
   const location = useLocation();
 
   const lang = useMemo(() => {
-    const paramLang = params.lang as LanguageCode;
-    if (SUPPORTED_LANGUAGES.some(l => l.code === paramLang)) {
-      return paramLang;
-    }
-    return DEFAULT_LANGUAGE;
-  }, [params.lang]);
+    return getLangFromPath(location.pathname);
+  }, [location.pathname]);
 
   const t = useMemo(() => getTranslation(lang), [lang]);
 
@@ -49,7 +55,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
     switchLanguage,
     localizedPath,
     languages: SUPPORTED_LANGUAGES,
-  }), [lang, t]);
+  }), [lang, t, localizedPath]);
 
   return (
     <I18nContext.Provider value={value}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import {
   Shield,
@@ -98,12 +98,29 @@ const PolicyLanguageSelector = ({ value, onChange }: { value: string, onChange: 
 
 type Page = 'home' | 'how-it-works' | 'resources' | 'why-free-gdpr';
 
+// Helper to get page from pathname
+function getPageFromPath(pathname: string): Page {
+  const segments = pathname.split('/').filter(Boolean);
+  // Remove language prefix if present
+  if (segments.length > 0 && SUPPORTED_LANGUAGES.some(l => l.code === segments[0])) {
+    segments.shift();
+  }
+  const path = segments[0] || '';
+  switch (path) {
+    case 'how-it-works': return 'how-it-works';
+    case 'resources': return 'resources';
+    case 'why-free-gdpr': return 'why-free-gdpr';
+    default: return 'home';
+  }
+}
+
 // --- Main App Content ---
 function AppContent() {
   const { t, lang, localizedPath } = useI18n();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [currentPage, setCurrentPage] = useState<Page>(() => getPageFromPath(window.location.pathname));
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<PolicyFormData>(initialFormData);
   const [status, setStatus] = useState<GenerationStatus>('idle');
@@ -113,6 +130,12 @@ function AppContent() {
   // AI Thinking State
   const [thinkingStep, setThinkingStep] = useState(0);
   const thinkingIntervalRef = useRef<number | null>(null);
+
+  // Sync page state from URL when location changes
+  useEffect(() => {
+    const page = getPageFromPath(location.pathname);
+    setCurrentPage(page);
+  }, [location.pathname]);
 
   const aiThinkingSteps = [
     { text: t.aiThinking.analyzing, icon: BrainCircuit },
