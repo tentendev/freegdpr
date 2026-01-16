@@ -224,6 +224,32 @@ export const zhCN: TranslationKeys = {
     tentenDesc: '亚洲领先的AI优先机构',
     disclaimer: '隐私政策生成器仅供参考。',
   },
+  cookieConsent: {
+    title: '我们重视您的隐私',
+    description: '我们使用cookies来增强您的浏览体验、分析网站流量并个性化内容。点击"全部接受"即表示您同意我们使用cookies。',
+    customize: '自定义偏好',
+    acceptAll: '全部接受',
+    acceptSelected: '接受已选',
+    rejectAll: '全部拒绝',
+    alwaysActive: '始终启用',
+    privacyLink: '阅读我们的隐私政策',
+    necessary: {
+      title: '必要Cookies',
+      description: '网站正常运行所必需的。无法禁用。',
+    },
+    analytics: {
+      title: '分析Cookies',
+      description: '帮助我们了解访问者如何与我们的网站互动。',
+    },
+    marketing: {
+      title: '营销Cookies',
+      description: '用于投放个性化广告。',
+    },
+    preferences: {
+      title: '偏好Cookies',
+      description: '记住您的设置和偏好以获得更好的体验。',
+    },
+  },
 };
 
 export const zhTW: TranslationKeys = {
@@ -449,5 +475,31 @@ export const zhTW: TranslationKeys = {
     builtBy: '用愛❤️建構，作者',
     tentenDesc: '亞洲領先的AI優先機構',
     disclaimer: '隱私政策產生器僅供參考。',
+  },
+  cookieConsent: {
+    title: '我們重視您的隱私',
+    description: '我們使用cookies來增強您的瀏覽體驗、分析網站流量並個人化內容。點擊「全部接受」即表示您同意我們使用cookies。',
+    customize: '自訂偏好',
+    acceptAll: '全部接受',
+    acceptSelected: '接受已選',
+    rejectAll: '全部拒絕',
+    alwaysActive: '始終啟用',
+    privacyLink: '閱讀我們的隱私政策',
+    necessary: {
+      title: '必要Cookies',
+      description: '網站正常運作所必需的。無法停用。',
+    },
+    analytics: {
+      title: '分析Cookies',
+      description: '幫助我們了解訪客如何與我們的網站互動。',
+    },
+    marketing: {
+      title: '行銷Cookies',
+      description: '用於投放個人化廣告。',
+    },
+    preferences: {
+      title: '偏好Cookies',
+      description: '記住您的設定和偏好以獲得更好的體驗。',
+    },
   },
 };

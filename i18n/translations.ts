@@ -264,5 +264,32 @@ export const translations = {
       tentenDesc: 'The Leading AI-First Agency in Asia',
       disclaimer: 'Privacy Policy Generator provided for informational purposes only.',
     },
+    // Cookie Consent
+    cookieConsent: {
+      title: 'We Value Your Privacy',
+      description: 'We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.',
+      customize: 'Customize Preferences',
+      acceptAll: 'Accept All',
+      acceptSelected: 'Accept Selected',
+      rejectAll: 'Reject All',
+      alwaysActive: 'Always Active',
+      privacyLink: 'Read our Privacy Policy',
+      necessary: {
+        title: 'Necessary Cookies',
+        description: 'Essential for the website to function properly. Cannot be disabled.',
+      },
+      analytics: {
+        title: 'Analytics Cookies',
+        description: 'Help us understand how visitors interact with our website.',
+      },
+      marketing: {
+        title: 'Marketing Cookies',
+        description: 'Used to deliver personalized advertisements.',
+      },
+      preferences: {
+        title: 'Preference Cookies',
+        description: 'Remember your settings and preferences for a better experience.',
+      },
+    },
   },
 } as const;

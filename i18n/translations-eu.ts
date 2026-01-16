@@ -136,6 +136,32 @@ export const es: TranslationKeys = {
     },
   },
   footer: { copyright: '© {year} FreeGDPR. Todos los derechos reservados.', builtBy: 'Construido con Amor ❤️ por', tentenDesc: 'La Agencia AI-First Líder en Asia', disclaimer: 'Generador de Políticas de Privacidad proporcionado solo con fines informativos.' },
+  cookieConsent: {
+    title: 'Valoramos tu Privacidad',
+    description: 'Utilizamos cookies para mejorar tu experiencia de navegación, analizar el tráfico del sitio y personalizar el contenido. Al hacer clic en "Aceptar Todo", consientes el uso de cookies.',
+    customize: 'Personalizar Preferencias',
+    acceptAll: 'Aceptar Todo',
+    acceptSelected: 'Aceptar Seleccionados',
+    rejectAll: 'Rechazar Todo',
+    alwaysActive: 'Siempre Activo',
+    privacyLink: 'Leer nuestra Política de Privacidad',
+    necessary: {
+      title: 'Cookies Necesarias',
+      description: 'Esenciales para que el sitio web funcione correctamente. No se pueden desactivar.',
+    },
+    analytics: {
+      title: 'Cookies de Análisis',
+      description: 'Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web.',
+    },
+    marketing: {
+      title: 'Cookies de Marketing',
+      description: 'Se utilizan para mostrar anuncios personalizados.',
+    },
+    preferences: {
+      title: 'Cookies de Preferencias',
+      description: 'Recuerdan tu configuración y preferencias para una mejor experiencia.',
+    },
+  },
 };
 
 export const fr: TranslationKeys = {
@@ -270,6 +296,32 @@ export const fr: TranslationKeys = {
     },
   },
   footer: { copyright: '© {year} FreeGDPR. Tous droits réservés.', builtBy: 'Construit avec Amour ❤️ par', tentenDesc: 'L\'Agence AI-First Leader en Asie', disclaimer: 'Générateur de politique de confidentialité fourni à titre informatif uniquement.' },
+  cookieConsent: {
+    title: 'Nous Respectons Votre Vie Privée',
+    description: 'Nous utilisons des cookies pour améliorer votre expérience de navigation, analyser le trafic du site et personnaliser le contenu. En cliquant sur "Tout Accepter", vous consentez à notre utilisation des cookies.',
+    customize: 'Personnaliser les Préférences',
+    acceptAll: 'Tout Accepter',
+    acceptSelected: 'Accepter la Sélection',
+    rejectAll: 'Tout Refuser',
+    alwaysActive: 'Toujours Actif',
+    privacyLink: 'Lire notre Politique de Confidentialité',
+    necessary: {
+      title: 'Cookies Nécessaires',
+      description: 'Essentiels au bon fonctionnement du site web. Ne peuvent pas être désactivés.',
+    },
+    analytics: {
+      title: 'Cookies Analytiques',
+      description: 'Nous aident à comprendre comment les visiteurs interagissent avec notre site web.',
+    },
+    marketing: {
+      title: 'Cookies Marketing',
+      description: 'Utilisés pour diffuser des publicités personnalisées.',
+    },
+    preferences: {
+      title: 'Cookies de Préférences',
+      description: 'Mémorisent vos paramètres et préférences pour une meilleure expérience.',
+    },
+  },
 };
 
 export const de: TranslationKeys = {
@@ -404,6 +456,32 @@ export const de: TranslationKeys = {
     },
   },
   footer: { copyright: '© {year} FreeGDPR. Alle Rechte vorbehalten.', builtBy: 'Mit Liebe ❤️ erstellt von', tentenDesc: 'Die führende AI-First-Agentur in Asien', disclaimer: 'Datenschutzrichtlinien-Generator nur zu Informationszwecken bereitgestellt.' },
+  cookieConsent: {
+    title: 'Wir Schätzen Ihre Privatsphäre',
+    description: 'Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern, den Website-Traffic zu analysieren und Inhalte zu personalisieren. Durch Klicken auf "Alle Akzeptieren" stimmen Sie unserer Cookie-Nutzung zu.',
+    customize: 'Einstellungen Anpassen',
+    acceptAll: 'Alle Akzeptieren',
+    acceptSelected: 'Auswahl Akzeptieren',
+    rejectAll: 'Alle Ablehnen',
+    alwaysActive: 'Immer Aktiv',
+    privacyLink: 'Unsere Datenschutzrichtlinie lesen',
+    necessary: {
+      title: 'Notwendige Cookies',
+      description: 'Essentiell für das ordnungsgemäße Funktionieren der Website. Können nicht deaktiviert werden.',
+    },
+    analytics: {
+      title: 'Analyse-Cookies',
+      description: 'Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.',
+    },
+    marketing: {
+      title: 'Marketing-Cookies',
+      description: 'Werden verwendet, um personalisierte Werbung zu liefern.',
+    },
+    preferences: {
+      title: 'Präferenz-Cookies',
+      description: 'Merken sich Ihre Einstellungen und Präferenzen für ein besseres Erlebnis.',
+    },
+  },
 };
 
 export const pt: TranslationKeys = {
@@ -538,6 +616,32 @@ export const pt: TranslationKeys = {
     },
   },
   footer: { copyright: '© {year} FreeGDPR. Todos os direitos reservados.', builtBy: 'Construído com Amor ❤️ por', tentenDesc: 'A Agência AI-First Líder na Ásia', disclaimer: 'Gerador de política de privacidade fornecido apenas para fins informativos.' },
+  cookieConsent: {
+    title: 'Valorizamos Sua Privacidade',
+    description: 'Usamos cookies para melhorar sua experiência de navegação, analisar o tráfego do site e personalizar conteúdo. Ao clicar em "Aceitar Tudo", você consente com o uso de cookies.',
+    customize: 'Personalizar Preferências',
+    acceptAll: 'Aceitar Tudo',
+    acceptSelected: 'Aceitar Selecionados',
+    rejectAll: 'Rejeitar Tudo',
+    alwaysActive: 'Sempre Ativo',
+    privacyLink: 'Leia nossa Política de Privacidade',
+    necessary: {
+      title: 'Cookies Necessários',
+      description: 'Essenciais para o funcionamento adequado do site. Não podem ser desativados.',
+    },
+    analytics: {
+      title: 'Cookies de Análise',
+      description: 'Nos ajudam a entender como os visitantes interagem com nosso site.',
+    },
+    marketing: {
+      title: 'Cookies de Marketing',
+      description: 'Usados para fornecer anúncios personalizados.',
+    },
+    preferences: {
+      title: 'Cookies de Preferências',
+      description: 'Lembram suas configurações e preferências para uma experiência melhor.',
+    },
+  },
 };
 
 export const ru: TranslationKeys = {
@@ -672,4 +776,30 @@ export const ru: TranslationKeys = {
     },
   },
   footer: { copyright: '© {year} FreeGDPR. Все права защищены.', builtBy: 'Создано с любовью ❤️', tentenDesc: 'Ведущее AI-First агентство в Азии', disclaimer: 'Генератор политики конфиденциальности предоставлен только в информационных целях.' },
+  cookieConsent: {
+    title: 'Мы Ценим Вашу Конфиденциальность',
+    description: 'Мы используем cookies для улучшения вашего опыта просмотра, анализа трафика сайта и персонализации контента. Нажимая "Принять все", вы соглашаетесь на использование cookies.',
+    customize: 'Настроить Предпочтения',
+    acceptAll: 'Принять Все',
+    acceptSelected: 'Принять Выбранные',
+    rejectAll: 'Отклонить Все',
+    alwaysActive: 'Всегда Активны',
+    privacyLink: 'Читать нашу Политику Конфиденциальности',
+    necessary: {
+      title: 'Необходимые Cookies',
+      description: 'Необходимы для правильной работы сайта. Не могут быть отключены.',
+    },
+    analytics: {
+      title: 'Аналитические Cookies',
+      description: 'Помогают нам понять, как посетители взаимодействуют с нашим сайтом.',
+    },
+    marketing: {
+      title: 'Маркетинговые Cookies',
+      description: 'Используются для показа персонализированной рекламы.',
+    },
+    preferences: {
+      title: 'Cookies Предпочтений',
+      description: 'Запоминают ваши настройки и предпочтения для лучшего опыта.',
+    },
+  },
 };

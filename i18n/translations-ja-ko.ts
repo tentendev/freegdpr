@@ -224,6 +224,32 @@ export const ja: TranslationKeys = {
     tentenDesc: 'アジアをリードするAIファーストエージェンシー',
     disclaimer: 'プライバシーポリシージェネレーターは情報提供のみを目的としています。',
   },
+  cookieConsent: {
+    title: 'プライバシーを大切にしています',
+    description: '当サイトでは、ブラウジング体験の向上、サイトトラフィックの分析、コンテンツのパーソナライズのためにCookieを使用しています。「すべて同意」をクリックすると、Cookieの使用に同意したことになります。',
+    customize: '設定をカスタマイズ',
+    acceptAll: 'すべて同意',
+    acceptSelected: '選択したものを同意',
+    rejectAll: 'すべて拒否',
+    alwaysActive: '常に有効',
+    privacyLink: 'プライバシーポリシーを読む',
+    necessary: {
+      title: '必須Cookie',
+      description: 'ウェブサイトが正常に機能するために必要です。無効にできません。',
+    },
+    analytics: {
+      title: '分析Cookie',
+      description: '訪問者がウェブサイトとどのようにやり取りするかを理解するのに役立ちます。',
+    },
+    marketing: {
+      title: 'マーケティングCookie',
+      description: 'パーソナライズされた広告を配信するために使用されます。',
+    },
+    preferences: {
+      title: '設定Cookie',
+      description: 'より良い体験のために設定と好みを記憶します。',
+    },
+  },
 };
 
 export const ko: TranslationKeys = {
@@ -449,5 +475,31 @@ export const ko: TranslationKeys = {
     builtBy: '사랑을 담아 ❤️ 제작',
     tentenDesc: '아시아 최고의 AI 우선 에이전시',
     disclaimer: '개인정보 처리방침 생성기는 정보 제공 목적으로만 제공됩니다.',
+  },
+  cookieConsent: {
+    title: '개인정보를 소중히 여깁니다',
+    description: '저희는 브라우징 경험 향상, 사이트 트래픽 분석, 콘텐츠 개인화를 위해 쿠키를 사용합니다. "모두 동의"를 클릭하면 쿠키 사용에 동의하게 됩니다.',
+    customize: '환경설정 사용자 지정',
+    acceptAll: '모두 동의',
+    acceptSelected: '선택 동의',
+    rejectAll: '모두 거부',
+    alwaysActive: '항상 활성',
+    privacyLink: '개인정보 처리방침 읽기',
+    necessary: {
+      title: '필수 쿠키',
+      description: '웹사이트가 정상적으로 작동하는 데 필수적입니다. 비활성화할 수 없습니다.',
+    },
+    analytics: {
+      title: '분석 쿠키',
+      description: '방문자가 웹사이트와 어떻게 상호작용하는지 이해하는 데 도움이 됩니다.',
+    },
+    marketing: {
+      title: '마케팅 쿠키',
+      description: '개인화된 광고를 제공하는 데 사용됩니다.',
+    },
+    preferences: {
+      title: '환경설정 쿠키',
+      description: '더 나은 경험을 위해 설정과 선호도를 기억합니다.',
+    },
   },
 };

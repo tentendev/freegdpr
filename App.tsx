@@ -26,6 +26,7 @@ import { CountrySelector } from './components/CountrySelector';
 import { WhyFreeGDPR } from './components/WhyFreeGDPR';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { SEOHead } from './components/SEOHead';
+import { CookieConsent } from './components/CookieConsent';
 import { I18nProvider, useI18n } from './i18n/I18nContext';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, LanguageCode } from './i18n';
 
@@ -591,6 +592,9 @@ function AppContent() {
           <p>{t.footer.disclaimer}</p>
         </div>
       </footer>
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 }
